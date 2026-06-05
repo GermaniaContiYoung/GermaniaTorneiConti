@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <!-- FORZATURA DESKTOP SU MOBILE -->
+    <meta name="viewport" content="width=1200">
+    <title>Scheda Giocatore - Germania Conti Young</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .stats-container {
+            padding-top: 140px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            min-height: 80vh;
+        }
+        .player-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #151515;
+            border: 2px solid #d4af37;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+        }
+        .player-profile img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #d4af37;
+            margin-bottom: 20px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+            margin-top: 30px;
+        }
+        .stat-box {
+            background: #090909;
+            border: 1px solid #d4af37;
+            border-radius: 12px;
+            padding: 20px;
+            transition: 0.3s ease;
+        }
+        .stat-box:hover {
+            transform: translateY(-5px);
+            background: #d4af37;
+            color: black;
+        }
+        .stat-box:hover h4 {
+            color: black;
+        }
+        .stat-box h4 {
+            font-size: 2.5rem;
+            color: #d4af37;
+            font-weight: 800;
+            margin-bottom: 5px;
+            transition: 0.3s;
+        }
+        .stat-box p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 35px;
+            border: 2px solid #d4af37;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            background: #d4af37;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="logo Germania.PNG" alt="Logo"></a>
+        </div>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#team">Team</a></li>
+            <li><a href="index.html#staff">Staff</a></li>
+            <li><a href="index.html#partite">Amichevole</a></li>
+            <li><a href="campo.html">Campo Allenamento</a></li>
+            <li><a href="index.html#contatti">Contatti</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="stats-container">
+    <h2 id="page-title">SCHEDA GIOCATORE</h2>
+    
+    <div class="player-profile">
+        <img id="player-img" src="" alt="Foto Giocatore">
+        <h3 id="player-name">Caricamento...</h3>
+        <p id="player-role" style="color: #d4af37; font-weight: 600; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase;"></p>
+        
+        <div class="stats-grid" id="stats-wrapper"></div>
+    </div>
+
+    <a href="index.html#team" class="back-btn">← Torna alla Rosa</a>
+</div>
+
+<footer id="contatti" style="margin-top: 60px;">
+    <p>© 2025 - 2026 Germania Conti Young</p>
+    <p>Roma - Torneo Conti Young</p>
+</footer>
+
+<script src="giocatori.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <!-- FORZATURA DESKTOP SU MOBILE -->
+    <meta name="viewport" content="width=1200">
+    <title>Campo Allenamento - Germania Conti Young</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        #map { 
+            height: 500px; 
+            width: 100%; 
+            max-width: 900px; 
+            margin: 30px auto; 
+            border: 2px solid #d4af37; 
+            border-radius: 20px;
+            z-index: 1;
+            background-color: #151515;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .map-container {
+            padding-top: 140px;
+            text-align: center;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="logo Germania.PNG" alt="Logo"></a>
+        </div>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#team">Team</a></li>
+            <li><a href="index.html#staff">Staff</a></li>
+            <li><a href="index.html#partite">Amichevole</a></li>
+            <li><a href="campo.html" style="color:#d4af37;">Campo Allenamento</a></li>
+            <li><a href="index.html#contatti">Contatti</a></li>
+            <li class="nav-social">
+                <a href="https://www.instagram.com/germania_torneicontiyoung?utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@germania_torneiconti2k26?_r=1&_t=ZN-96xFqH0A2fG" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<div class="map-container">
+    <h2>IL NOSTRO CAMPO DA GIOCO</h2>
+    <p>Ci alleniamo presso la <b>SSD Airone</b> in Via del Quadraro, Roma.</p>
+    <p>Si trova a 2 minutes dalla fermata <b>MA Lucio Sestio.</b></p>
+    
+    <div id="map"></div>
+</div>
+
+<footer id="contatti">
+    <div class="footer-social">
+        <a href="https://www.instagram.com/germania_torneicontiyoung?utm_source=qr" target="_blank" class="instagram"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://www.tiktok.com/@germania_torneiconti2k26?_r=1&_t=ZN-96xFqH0A2fG" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+    </div>
+    <p style="margin-top: 20px;">© 2025 - 2026 Germania Conti Young</p>
+    <p>Roma - Torneo Conti Young</p>
+</footer>
+
+<script>
+    var lat = 41.8647;
+    var lng = 12.5332;
+
+    var map = L.map('map').setView([lat, lng], 17);
+    
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([lat, lng]).addTo(map)
+        .bindPopup('<b>SSD Airone</b><br>Via del Quadraro, Roma<br>Campo in cui si svolgerà il Torneo Conti Young')
+        .openPopup();
+
+    setTimeout(function() {
+        map.invalidateSize();
+    }, 300);
+</script>
+
+</body>
+</html>
