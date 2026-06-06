@@ -4,52 +4,29 @@
     <meta charset="UTF-8">
     <!-- FORZATURA DESKTOP SU MOBILE -->
     <meta name="viewport" content="width=1200">
-    <title>Campo Allenamento - Germania Conti Young</title>
-    
+    <title>Convocati Ufficiali - Germania Conti Young</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
     <style>
-        #map { 
-            height: 500px; 
-            width: 100%; 
-            max-width: 900px; 
-            margin: 30px auto; 
-            border: 2px solid #d4af37 !important; 
-            border-radius: 20px;
-            z-index: 1;
-            background-color: #151515;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-        .map-container {
+        .convocazioni-container {
             padding-top: 140px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 60px;
             text-align: center;
-            padding-bottom: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            justify-content: center;
+        }
+        .convocazioni-media {
+            max-width: 600px;
             width: 100%;
-        }
-        .map-container h2 {
-            color: #d4af37;
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
-        .map-container p {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            text-align: center;
+            border: 2px solid #d4af37;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            margin-top: 20px;
         }
         .back-btn-container {
+            margin-top: 40px;
             text-align: center;
-            margin-top: 30px;
-            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -70,10 +47,9 @@
                     <a href="partita.html" class="dropdown-link">vs Galles</a>
                 </div>
             </li>
-            <li><a href="campo.html" style="color:#d4af37;">Campo Allenamento</a></li>
-            <!-- NUOVO LINK CLASSIFICA -->
+            <li><a href="campo.html">Campo Allenamento</a></li>
             <li><a href="classifica.html">Classifica</a></li>
-            <li><a href="#contatti">Contatti</a></li>
+            <li><a href="convocazioni.html" style="color:#d4af37;">Convocazioni</a></li>
             <li class="nav-social">
                 <a href="https://www.instagram.com/germania_torneicontiyoung?utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.tiktok.com/@germania_torneiconti2k26?_r=1&_t=ZN-96xFqH0A2fG" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
@@ -82,12 +58,14 @@
     </nav>
 </header>
 
-<div class="map-container">
-    <h2>IL NOSTRO CAMPO DA GIOCO</h2>
-    <p>Ci alleniamo presso la <b>SSD Airone</b> in Via del Quadraro, Roma.</p>
-    <p>Si trova a 2 minuti dalla fermata <b>MA Lucio Sestio.</b></p>
-    
-    <div id="map"></div>
+<div class="convocazioni-container">
+    <h2>CONVOCAZIONI UFFICIALI</h2>
+    <p style="text-align: center; font-size: 1.2rem; color: #888; margin-bottom: 20px;">Torneo Conti Young - Prossimo Turno</p>
+
+    <div style="text-align: center;">
+        <!-- IMMAGINE DELLA CONVOCAZIONE CARICATA -->
+        <img src="convoc.JPG" alt="Lista Convocati" class="convocazioni-media">
+    </div>
 
     <div class="back-btn-container">
         <a href="index.html" class="btn">← TORNA ALLA HOME</a>
@@ -103,20 +81,6 @@
     <p>Roma - Torneo Conti Young</p>
 </footer>
 
-<script>
-    var lat = 41.8647;
-    var lng = 12.5332;
-
-    var map = L.map('map').setView([lat, lng], 17);
-    
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-
-    var marker = L.marker([lat, lng]).addTo(map);
-    marker.bindPopup("<b>SSD Airone</b><br>Campo di allenamento della Germania.").openPopup();
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>

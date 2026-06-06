@@ -99,7 +99,8 @@ body {
     margin-top: 5px;
 }
 
-.dropdown.open .dropdown-content {
+/* MOSTRA IL MENU DROPDOWN AL PASSAGGIO DEL MOUSE (HOVER) */
+.dropdown:hover .dropdown-content {
     display: flex;
     flex-direction: column;
 }
@@ -126,7 +127,7 @@ body {
     color: black !important;
 }
 
-/* HERO STRUTTURA */
+/* HERO STRUTTURA - RIPRISTINATO SFONDO ORIGINALE */
 .hero {
     height: 100vh;
     background: url('logo Germania.PNG');
@@ -215,7 +216,7 @@ h2 {
     line-height: 1.8;
 }
 
-/* CARD CONTENITORI E FIGURINE REATTIVE */
+/* CARD CONTENITORI E FIGURINE REATTIVE - RIPRISTINATI I CONTORNI GRANDI */
 .cards {
     display: flex;
     justify-content: center;
@@ -228,7 +229,7 @@ h2 {
     background: #151515;
     border-radius: 20px;
     overflow: hidden;
-    border: 2px solid #d4af37;
+    border: 2px solid #d4af37; /* Bordo grande originale */
     box-shadow: 0 10px 20px rgba(0, 0, 0, .5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }

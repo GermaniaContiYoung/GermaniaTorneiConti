@@ -6,7 +6,6 @@
     <!-- FORZATURA DESKTOP SU MOBILE -->
     <meta name="viewport" content="width=1200">
     <title>Germania Conti Young</title>
-    <meta name="description" content="Strumento online per la gestione e il calcolo dei conti per i tornei in Germania. Calcola quote e risultati in modo semplice.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -17,22 +16,22 @@
 <header>
     <nav class="navbar">
         <div class="logo">
-            <img src="logo Germania.PNG" alt="Logo">
+            <img src="logoppp.JPG" alt="Logo">
         </div>
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="#staff">Staff</a></li>
-            <li class="dropdown" id="amichevoleDropdown">
+            <li class="dropdown">
                 <a class="dropbtn">Amichevole</a>
                 <div class="dropdown-content">
-                    <a href="#locandina-sec" class="dropdown-link">Locandina</a>
-                    <a href="#partite" class="dropdown-link">Risultato Finale</a>
-                    <a href="#mvp-sec" class="dropdown-link">MVP</a>
+                    <a href="partita.html" class="dropdown-link">vs Galles</a>
                 </div>
             </li>
             <li><a href="campo.html">Campo Allenamento</a></li>
-            <li><a href="#contatti">Contatti</a></li>
+            <li><a href="classifica.html">Classifica</a></li>
+            <!-- NUOVA VOCE MENU CONVOCAZIONI -->
+            <li><a href="convocazioni.html">Convocazioni</a></li>
             <li class="nav-social">
                 <a href="https://www.instagram.com/germania_torneicontiyoung?utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.tiktok.com/@germania_torneiconti2k26?_r=1&_t=ZN-96xFqH0A2fG" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
@@ -126,7 +125,7 @@
             </div>
         </div>
 
-        <div class="player-card" style="cursor: pointer;" onclick="window.open('giponente.html?id=potente', '_blank')">
+        <div class="player-card" style="cursor: pointer;" onclick="window.open('giocatore.html?id=potente', '_blank')">
             <img src="potix.JPG" alt="Lorenzo Potente">
             <div class="info">
                 <h3>Lorenzo Potente</h3>
@@ -172,40 +171,29 @@
 </section>
 
 <section id="staff">
-    <h2>ALLENATORI</h2>
+    <h2>SOCIETÀ E STAFF</h2>
+    
+    <h3 class="role-title">DIRIGENZA</h3>
+    <div class="staff-grid" style="margin-bottom: 60px;">
+        <div class="staff-card">
+            <img src="pres.JPG" alt="Lorenzo De Carolis - Presidente">
+            <h3>Lorenzo De Carolis</h3>
+            <p>Presidente</p>
+        </div>
+        
+        <div class="staff-card">
+            <img src="ds.jpg" alt="Gianmarco Bellian & Federico Salera - Direttori Sportivi">
+            <h3>G. Bellian & F. Salera</h3>
+            <p>Direttori Sportivi</p>
+        </div>
+    </div>
+
+    <h3 class="role-title">AREA TECNICA</h3>
     <div class="staff-grid">
         <div class="staff-card">
             <img src="coaches.JPG" alt="Coaches">
             <h3>Federico Grande & Matteo Realacci</h3>
             <p>Mr Fuhrer & Mr Mourinho</p>
-        </div>
-    </div>
-</section>
-
-<section id="locandina-sec" style="text-align: center; background: #0f0f0f;">
-    <h2>LOCANDINA DI MATCH</h2>
-    <img src="amichevole.JPG" alt="Locandina" style="max-width: 500px; width: 100%; border: 2px solid #d4af37; border-radius: 20px;">
-</section>
-
-<section id="partite">
-    <h2>ULTIMO RISULTATO</h2>
-    <div class="result-card" style="margin-bottom: 30px;">
-        <h3>GERMANIA 9 - 4 GALLES</h3>
-        <p>Amichevole Ufficiale</p>
-        <span>2 Giugno 2025</span>
-    </div>
-    <div style="text-align: center;">
-        <img src="end game.JPG" alt="Tabellino" style="max-width: 500px; width: 100%; border: 2px solid #d4af37; border-radius: 20px;">
-    </div>
-</section>
-
-<section id="mvp-sec">
-    <h2>MVP DELLA SETTIMANA</h2>
-    <div class="mvp-card-vertical">
-        <img src="mvp giova.JPG" alt="MVP">
-        <div class="info">
-            <h3>Emanuele Giovannetti</h3>
-            <p>Con una prestazione da capogiro e ben 4 reti segnate trascina la squadra alla vittoria!</p>
         </div>
     </div>
 </section>
