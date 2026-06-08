@@ -68,7 +68,7 @@
 
     <h3 class="role-title">PORTIERI</h3>
     <div class="cards" style="margin-bottom: 60px;">
-        <div class="player-card" style="cursor: pointer;" onclick="window.open('giocatore.html?id=raparelli', '_blank')">
+        <div class="player-card" style="cursor: pointer;" onclick="apriGiocatore('raparelli')">
             <img src="rapa.JPG" alt="Matteo Raparelli">
             <div class="info">
                 <h3>Matteo Raparelli</h3>
@@ -79,7 +79,7 @@
 
     <h3 class="role-title">DIFENSORI</h3>
     <div class="cards" style="margin-bottom: 60px;">
-        <div class="player-card" style="cursor: pointer;" onclick="window.open('giocatore.html?id=muraru', '_blank')">
+        <div class="player-card" style="cursor: pointer;" onclick="apriGiocatore('muraru')">
             <img src="ciccio.JPG" alt="Cristian Muraru">
             <div class="info">
                 <h3>Cristian Murariu</h3>
@@ -87,7 +87,7 @@
             </div>
         </div>
 
-        <div class="player-card" style="cursor: pointer;" onclick="window.open('giocatore.html?id=cofani', '_blank')">
+        <div class="player-card" style="cursor: pointer;" onclick="apriGiocatore('cofani')">
             <img src="jag.JPG" alt="Jaguaro">
             <div class="info">
                 <h3>Davide Cofani</h3>
@@ -95,7 +95,7 @@
             </div>
         </div>
 
-        <div class="player-card" style="cursor: pointer;" onclick="window.open('giocatore.html?id=mastromattei', '_blank')">
+        <div class="player-card" style="cursor: pointer;" onclick="apriGiocatore('mastromattei')">
             <img src="mastro.JPG" alt="Daniele Mastromattei">
             <div class="info">
                 <h3>Daniele Mastromattei</h3>
@@ -103,7 +103,7 @@
             </div>
         </div>
 
-        <div class="player-card" style="cursor: pointer;" onclick="window.open('giocatore.html?id=digiacomo', '_blank')">
+        <div class="player-card" style="cursor: pointer;" onclick="apriGiocatore('digiacomo')">
             <img src="diggia.JPG" alt="Valerio Di Giacomo">
             <div class="info">
                 <h3>Valerio Di Giacomo</h3>
@@ -114,7 +114,7 @@
 
     <h3 class="role-title">CENTROCAMPISTI</h3>
     <div class="cards" style="margin-bottom: 60px;">
-        <div class="player-card" style="cursor: pointer;" onclick="window.open('giocatore.html?id=marone', '_blank')">
+        <div class="player-card" style="cursor: pointer;" onclick="apriGiocatore('marone')">
             <img src="wallu.JPG" alt="Christian Marone">
             <div class="info">
                 <h3>Christian Marone</h3>
@@ -122,7 +122,7 @@
             </div>
         </div>
 
-        <div class="player-card" style="cursor: pointer;" onclick="window.open('giocatore.html?id=cava', '_blank')">
+        <div class="player-card" style="cursor: pointer;" onclick="apriGiocatore('cava')">
             <img src="dude.JPG" alt="Lorenzo Cava">
             <div class="info">
                 <h3>Lorenzo Cava</h3>
@@ -130,7 +130,7 @@
             </div>
         </div>
 
-        <div class="player-card" style="cursor: pointer;" onclick="window.open('giocatore.html?id=potente', '_blank')">
+        <div class="player-card" style="cursor: pointer;" onclick="apriGiocatore('potente')">
             <img src="potix.JPG" alt="Lorenzo Potente">
             <div class="info">
                 <h3>Lorenzo Potente</h3>
@@ -138,7 +138,7 @@
             </div>
         </div>
 
-        <div class="player-card" style="cursor: pointer;" onclick="window.open('giocatore.html?id=franci', '_blank')">
+        <div class="player-card" style="cursor: pointer;" onclick="apriGiocatore('franci')">
             <img src="bryan.JPG" alt="Cristian Franci">
             <div class="info">
                 <h3>Cristian Franci</h3>
@@ -149,7 +149,7 @@
 
     <h3 class="role-title">ATTACCANTI</h3>
     <div class="cards">
-        <div class="player-card" style="cursor: pointer;" onclick="window.open('giocatore.html?id=giovannetti', '_blank')">
+        <div class="player-card" style="cursor: pointer;" onclick="apriGiocatore('giovannetti')">
             <img src="giova.JPG" alt="Emanuele Giovannetti">
             <div class="info">
                 <h3>Emanuele Giovannetti</h3>
@@ -157,7 +157,7 @@
             </div>
         </div>
 
-        <div class="player-card" style="cursor: pointer;" onclick="window.open('giocatore.html?id=ruotolo', '_blank')">
+        <div class="player-card" style="cursor: pointer;" onclick="apriGiocatore('ruotolo')">
             <img src="chinese.JPG" alt="Danilo Ruotolo">
             <div class="info">
                 <h3>Danilo Ruotolo</h3>
@@ -165,7 +165,7 @@
             </div>
         </div>
 
-        <div class="player-card" style="cursor: pointer;" onclick="window.open('giocatore.html?id=loturco', '_blank')">
+        <div class="player-card" style="cursor: pointer;" onclick="apriGiocatore('loturco')">
             <img src="lo turco.JPG" alt="Andrea Lo Turco">
             <div class="info">
                 <h3>Andrea Lo Turco</h3>
@@ -213,5 +213,28 @@
 </footer>
 
 <script src="script.js"></script>
+
+<!-- SCRIPT PER IL SALVATAGGIO DELLA POSIZIONE DELLA ROSA -->
+<script>
+    function apriGiocatore(id) {
+        // Salva l'altezza corrente di scorrimento nella memoria temporanea del browser
+        sessionStorage.setItem('posizioneRosa', window.scrollY);
+        // Cambia pagina nella stessa scheda
+        window.location.href = 'giocatore.html?id=' + id;
+    }
+
+    // Al caricamento, controlla se deve riposizionare la schermata
+    window.addEventListener('DOMContentLoaded', function() {
+        const posizioneSalvata = sessionStorage.getItem('posizioneRosa');
+        if (posizioneSalvata) {
+            window.scrollTo({
+                top: parseInt(posizioneSalvata, 10),
+                behavior: 'instant'
+            });
+            // Cancella il dato salvato per evitare comportamenti anomali ai successivi refresh
+            sessionStorage.removeItem('posizioneRosa');
+        }
+    });
+</script>
 </body>
 </html>
