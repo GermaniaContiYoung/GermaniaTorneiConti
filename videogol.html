@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200">
+    <title>Video Gol - Germania Conti Young</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .stats-container {
+            padding-top: 140px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            min-height: 80vh;
+        }
+        .player-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #151515;
+            border: 2px solid #d4af37;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        /* Stile locandina cliccabile */
+        .match-result-poster {
+            max-width: 550px;
+            width: 100%;
+            cursor: pointer;
+            border: 2px solid #222;
+            border-radius: 15px;
+            transition: 0.3s ease-in-out;
+            display: block;
+            margin: 20px auto 0 auto;
+        }
+        .match-result-poster:hover {
+            border-color: #d4af37;
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(212,175,55,0.3);
+        }
+
+        /* Animazione e gestione sezioni */
+        .markers-section, .sub-selection-section, .video-section {
+            display: none;
+            width: 100%;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 100%;
+            margin-top: 35px;
+        }
+        .stat-card {
+            background: #090909;
+            border: 1px solid #222;
+            border-radius: 15px;
+            padding: 25px;
+            transition: 0.3s;
+            cursor: pointer;
+            display: block;
+        }
+        .stat-card:hover {
+            border-color: #d4af37;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(212,175,55,0.2);
+        }
+        .stat-card h4 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .stat-card p {
+            font-size: 1.2rem;
+            color: #d4af37;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Stile Riproduttore Video */
+        video {
+            width: 100%;
+            max-width: 650px;
+            border-radius: 15px;
+            border: 2px solid #d4af37;
+            background: #000;
+            margin-top: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+        }
+
+        .back-btn, .action-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid #d4af37;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .back-btn:hover, .action-btn:hover {
+            background: #d4af37;
+            color: black;
+            box-shadow: 0 0 15px rgba(212,175,55,0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="logoppp.JPG" alt="Logo"></a>
+        </div>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#team">Team</a></li>
+            <li><a href="index.html#staff">Staff</a></li>
+            <li class="dropdown">
+                <a class="dropbtn">Amichevole</a>
+                <div class="dropdown-content">
+                    <a href="partita.html" class="dropdown-link">vs Galles</a>
+                </div>
+            </li>
+            <li><a href="campo.html">Campo Allenamento</a></li>
+            <li><a href="calendario.html">Calendario</a></li>
+            <li><a href="classifica.html">Classifica</a></li>
+            <li><a href="convocazioni.html">Convocazioni</a></li>
+            <li><a href="videogol.html" style="color:#d4af37;">Video Gol</a></li>
+            <li class="nav-social">
+                <a href="https://www.instagram.com/germania_torneicontiyoung?utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@germania_torneiconti2k26?_r=1&_t=ZN-96xFqH0A2fG" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<div class="stats-container">
+    <h2>VIDEO GOL</h2>
+    
+    <div class="player-profile">
+        <h3 id="main-title" style="font-size: 2.2rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: white;">
+            Gol vs Marocco
+        </h3>
+        
+        <div id="step-poster" style="width: 100%;">
+            <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
+                Clicca sulla locandina per vedere i Marcatori
+            </p>
+            <img src="vsMarocco.jpg" alt="Risultato Finale vs Marocco" class="match-result-poster" onclick="mostraMarcatori()">
+        </div>
+
+        <div id="step-markers" class="markers-section">
+            <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
+                Seleziona un giocatore per vedere i gol
+            </p>
+            
+            <div class="stats-grid">
+                <div class="stat-card" onclick="sceltaGolMultipli('cofani', 'Davide Cofani', false)">
+                    <h4>Davide Cofani</h4>
+                    <p>2 Gol <i class="fas fa-chevron-right" style="font-size: 0.9rem;"></i></p>
+                </div>
+
+                <div class="stat-card" onclick="sceltaGolMultipli('giova', 'Emanuele Giovannetti', true)">
+                    <h4>Emanuele Giovannetti</h4>
+                    <p>2 Gol <i class="fas fa-chevron-right" style="font-size: 0.9rem;"></i></p>
+                </div>
+
+                <div class="stat-card" onclick="avviaVideo('marone1', 'Christian Marone', 'markers')">
+                    <h4>Christian Marone</h4>
+                    <p>1 Gol <i class="fas fa-play-circle"></i></p>
+                </div>
+
+                <div class="stat-card" onclick="avviaVideo('ruotolo1', 'Danilo Ruotolo', 'markers')">
+                    <h4>Danilo Ruotolo</h4>
+                    <p>1 Gol <i class="fas fa-play-circle"></i></p>
+                </div>
+            </div>
+            
+            <button class="action-btn" onclick="tornaAlPoster()" style="margin-top: 30px;">← Torna al Risultato</button>
+        </div>
+
+        <div id="step-sub-selection" class="sub-selection-section">
+            <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
+                Scegli quale rete vuoi guardare
+            </p>
+            
+            <div class="stats-grid" id="sub-selection-grid">
+                </div>
+            
+            <button class="action-btn" onclick="tornaAiMarcatori()" style="margin-top: 30px;">← Torna Indietro</button>
+        </div>
+
+        <div id="step-video" class="video-section">
+            <p id="video-subtitle" style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
+                Guarda l'azione del gol
+            </p>
+            
+            <video id="main-video-player" controls>
+                <source id="video-source" src="" type="video/mp4">
+                Il tuo browser non supporta la riproduzione di video.
+            </video>
+            
+            <br>
+            <button class="action-btn" id="video-back-btn" onclick="">← Torna Indietro</button>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-btn">← Torna alla Home</a>
+</div>
+
+<footer id="contatti" style="margin-top: 60px;">
+    <div class="footer-social">
+        <a href="https://www.instagram.com/germania_torneicontiyoung?utm_source=qr" target="_blank" class="instagram"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://www.tiktok.com/@germania_torneiconti2k26?_r=1&_t=ZN-96xFqH0A2fG" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+    </div>
+    <p style="margin-top: 20px;">© 2025 - 2026 Germania Conti Young</p>
+</footer>
+
+<script>
+    let giocatoreSelezionatoCorrente = '';
+    let nomeGiocatoreCorrente = '';
+
+    function mostraMarcatori() {
+        document.getElementById('step-poster').style.display = 'none';
+        document.getElementById('step-markers').style.display = 'block';
+        document.getElementById('step-sub-selection').style.display = 'none';
+        document.getElementById('step-video').style.display = 'none';
+        document.getElementById('main-title').innerText = "Gol vs Marocco";
+    }
+
+    function tornaAlPoster() {
+        document.getElementById('step-markers').style.display = 'none';
+        document.getElementById('step-poster').style.display = 'block';
+    }
+
+    // Gestisce il sottomenu e inverte l'ordine dei video se richiesto (per Giova)
+    function sceltaGolMultipli(prefissoFile, nomeGiocatore, deveInvertire) {
+        giocatoreSelezionatoCorrente = prefissoFile;
+        nomeGiocatoreCorrente = nomeGiocatore;
+
+        document.getElementById('main-title').innerText = nomeGiocatore;
+        document.getElementById('step-markers').style.display = 'none';
+        
+        const grid = document.getElementById('sub-selection-grid');
+        grid.innerHTML = ''; 
+        
+        // Se deve invertire (Giova): 1° Gol -> file 2, 2° Gol -> file 1
+        const fileGol1 = deveInvertire ? prefissoFile + "2" : prefissoFile + "1";
+        const fileGol2 = deveInvertire ? prefissoFile + "1" : prefissoFile + "2";
+
+        grid.innerHTML = `
+            <div class="stat-card" onclick="avviaVideo('${fileGol1}', '${nomeGiocatore} (1° Gol)', 'sub-menu')">
+                <h4>1° GOL</h4>
+                <p>Guarda il Video <i class="fas fa-play-circle"></i></p>
+            </div>
+            <div class="stat-card" onclick="avviaVideo('${fileGol2}', '${nomeGiocatore} (2° Gol)', 'sub-menu')">
+                <h4>2° GOL</h4>
+                <p>Guarda il Video <i class="fas fa-play-circle"></i></p>
+            </div>
+        `;
+        
+        document.getElementById('step-sub-selection').style.display = 'block';
+    }
+
+    function tornaAiMarcatori() {
+        document.getElementById('step-sub-selection').style.display = 'none';
+        document.getElementById('step-video').style.display = 'none';
+        document.getElementById('step-markers').style.display = 'block';
+        document.getElementById('main-title').innerText = "Gol vs Marocco";
+    }
+
+    function avviaVideo(nomeCompletoFile, titoloSchermata, provenienza) {
+        const player = document.getElementById('main-video-player');
+        const source = document.getElementById('video-source');
+        
+        source.src = nomeCompletoFile + ".mp4";
+        player.load();
+        player.play();
+        
+        document.getElementById('main-title').innerText = titoloSchermata;
+        
+        if (provenienza === 'markers') {
+            document.getElementById('step-markers').style.display = 'none';
+            document.getElementById('video-back-btn').setAttribute('onclick', 'tornaAiMarcatori()');
+        } else {
+            document.getElementById('step-sub-selection').style.display = 'none';
+            document.getElementById('video-back-btn').setAttribute('onclick', 'tornaAlSottomenu()');
+        }
+        
+        document.getElementById('step-video').style.display = 'block';
+    }
+
+    function tornaAlSottomenu() {
+        const player = document.getElementById('main-video-player');
+        player.pause();
+        document.getElementById('step-video').style.display = 'none';
+        document.getElementById('step-sub-selection').style.display = 'block';
+        document.getElementById('main-title').innerText = nomeGiocatoreCorrente;
+    }
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
