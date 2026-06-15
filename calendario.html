@@ -28,48 +28,68 @@
             border: 2px solid #d4af37;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease;
         }
-        .match-poster:hover {
-            transform: scale(1.02);
-        }
-        .countdown-box {
+        .countdown-container {
             background: #151515;
             border: 2px solid #d4af37;
             border-radius: 20px;
             padding: 30px;
+            margin: 40px auto;
             max-width: 600px;
-            margin: 40px auto 0 auto;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
-        .countdown-timer {
+        .countdown-title {
+            font-size: 1.5rem;
+            color: #d4af37;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .countdown {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 20px;
         }
-        .time-segment {
+        .time-box {
             background: #090909;
-            border: 1px solid rgba(214, 175, 55, 0.3);
+            border: 1px solid #333;
             border-radius: 10px;
             padding: 15px;
-            min-width: 80px;
+            min-width: 90px;
         }
-        .time-segment span {
+        .time-box span {
             display: block;
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            color: #d4af37;
+            color: white;
         }
-        .time-segment label {
+        .time-box label {
             font-size: 0.8rem;
-            text-transform: uppercase;
             color: #888;
-            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-top: 5px;
+            display: block;
         }
         .back-btn-container {
-            text-align: center;
             margin-top: 40px;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            background: #d4af37;
+            color: black;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+        .btn:hover {
+            background: white;
+            box-shadow: 0 5px 15px rgba(255,255,255,0.2);
         }
     </style>
 </head>
@@ -104,57 +124,93 @@
 </header>
 
 <div class="cal-container">
-    <h2 style="font-size: 2.2rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: #d4af37;">CALENDARIO GARE</h2>
+    <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">CALENDARIO GARE</h2>
+    <p style="font-size: 1.2rem; color: #888; margin-bottom: 30px;">Torneo Conti Young - Stagione 2025/2026</p>
 
-    <div style="margin-top: 30px; text-align: center;">
-        <h3 style="font-size: 1.8rem; font-weight: 800; color: #ffffff; letter-spacing: 1px; margin-bottom: 5px; text-transform: uppercase;">Girone M</h3>
-        <h4 style="font-size: 1.2rem; font-weight: 600; color: #aaa; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;">1a Giornata vs Marocco</h4>
-    </div>
-
-    <div class="media-single-container">
-        <img src="vsMarocco.JPG" alt="Risultato Finale vs Marocco" class="match-poster">
-    </div>
-
-    <div class="countdown-box">
-        <h3 style="color: #d4af37; text-transform: uppercase; font-size: 1.4rem; letter-spacing: 1px;">Prossimo Match in Arrivo</h3>
-        <p style="font-size: 1.1rem; margin-top: 5px; color: #eee;">In attesa della definizione della prossima gara</p>
+    <div style="background: #111; border: 1px solid #222; border-radius: 20px; padding: 20px; margin-bottom: 40px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">
+        <h3 style="color: #d4af37; font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Girone M - 1a Giornata</h3>
         
-        <div class="countdown-timer">
-            <div class="time-segment">
-                <span id="days">00</span>
-                <label>Giorni</label>
-            </div>
-            <div class="time-segment">
-                <span id="hours">00</span>
-                <label>Ore</label>
-            </div>
-            <div class="time-segment">
-                <span id="minutes">00</span>
-                <label>Minuti</label>
-            </div>
-            <div class="time-segment">
-                <span id="seconds">00</span>
-                <label>Secondi</label>
+        <div class="media-single-container" style="margin-top: 10px; margin-bottom: 20px;">
+            <img src="vsMarocco.jpg" alt="Germania vs Marocco" class="match-poster">
+        </div>
+
+        <div class="media-single-container" style="margin-top: 10px; margin-bottom: 10px; max-width: 550px;">
+            <button class="conf-btn" onclick="toggleConferenza()" style="width: 100%; background: #151515; color: #d4af37; border: 2px solid #d4af37; padding: 15px 20px; font-size: 1.1rem; font-weight: 700; border-radius: 15px; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px;">
+                <i class="fas fa-microphone"></i> Conferenza Stampa Post-Gara <i id="conf-icon" class="fas fa-chevron-down" style="transition: 0.3s;"></i>
+            </button>
+
+            <div id="conferenza-content" style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #090909; border-radius: 0 0 15px 15px; margin-top: -5px; border: 2px solid transparent; border-top: none;">
+                <div style="padding: 25px 20px; text-align: center;">
+                    
+                    <img src="confsta.JPG" alt="Conferenza Stampa" style="max-width: 100%; width: 100%; border: 2px solid #d4af37; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.6); margin-bottom: 25px;">
+                    
+                    <div style="color: #ffffff; text-align: left; line-height: 1.7; font-size: 1.05rem; font-family: 'Montserrat', sans-serif;">
+                        <p style="margin-bottom: 15px;">Al termine della gara contro il Marocco, conclusa sul 6-2, Mr Führer e Mr Mourinho hanno espresso soddisfazione per il risultato ma non per la prestazione.</p>
+                        
+                        <p style="margin-bottom: 15px;">I due tecnici hanno sottolineato come la squadra sia andata sotto nel punteggio, abbia reagito fino al 2-1, per poi concedere nuovamente il pareggio e mantenere la partita aperta fino a dieci minuti dalla fine.</p>
+                        
+                        <blockquote style="border-left: 3px solid #d4af37; padding-left: 15px; margin: 20px 0; font-style: italic; color: #e0e0e0; font-size: 1.1rem;">
+                            «Il risultato è ampio, ma abbiamo sofferto troppo. La reazione è stata positiva, ma dobbiamo imparare a gestire meglio i momenti della partita», il messaggio condiviso dai coach in conferenza stampa.
+                        </blockquote>
+                        
+                        <p style="font-weight: 600; color: #d4af37; margin-top: 15px;">Tre punti importanti per la Germania, con la consapevolezza che ci sarà ancora molto da migliorare.</p>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
 
+    <div class="countdown-container">
+        <div class="countdown-title">PROSSIMO MATCH: vs COSTA D'AVORIO</div>
+        <div style="color: #aaa; font-weight: 600; margin-top: -10px; margin-bottom: 20px; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 1px;">Venerdì 19 Giugno alle ore 21:00</div>
+        <div class="countdown">
+            <div class="time-box"><span id="days">00</span><label>Giorni</label></div>
+            <div class="time-box"><span id="hours">00</span><label>Ore</label></div>
+            <div class="time-box"><span id="minutes">00</span><label>Minuti</label></div>
+            <div class="time-box"><span id="seconds">00</span><label>Secondi</label></div>
+        </div>
+    </div>
+
     <div class="back-btn-container">
-        <a href="index.html" class="btn" style="text-decoration: none; background: #151515; color: #d4af37; padding: 12px 25px; border: 2px solid #d4af37; border-radius: 10px; font-weight: 700; transition: 0.3s;">← TORNA ALLA HOME</a>
+        <a href="index.html" class="btn">← Torna alla Home</a>
     </div>
 </div>
 
 <footer id="contatti">
-    <div class="footer-social" style="display: flex; justify-content: center; gap: 20px; padding: 20px 0;">
-        <a href="https://www.instagram.com/germania_torneicontiyoung?utm_source=qr" target="_blank" style="color: white; text-decoration: none;"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="https://www.tiktok.com/@germania_torneiconti2k26?_r=1&_t=ZN-96xFqH0A2fG" target="_blank" style="color: white; text-decoration: none;"><i class="fab fa-tiktok"></i> TikTok</a>
+    <div class="footer-social">
+        <a href="https://www.instagram.com/germania_torneicontiyoung?utm_source=qr" target="_blank" class="instagram"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://www.tiktok.com/@germania_torneiconti2k26?_r=1&_t=ZN-96xFqH0A2fG" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
     </div>
     <p style="text-align: center; margin-top: 20px;">© 2025 - 2026 Germania Conti Young</p>
     <p style="text-align: center; color: #aaa;">Roma - Torneo Conti Young</p>
 </footer>
 
+<script src="script.js"></script>
 <script>
-    const dataPartita = new Date("June 30, 2026 20:45:00").getTime();
+    // FUNZIONE DI APERTURA/CHIUSURA ACCORDION CONFERENZA STAMPA
+    function toggleConferenza() {
+        const content = document.getElementById("conferenza-content");
+        const icon = document.getElementById("conf-icon");
+        const btn = document.querySelector(".conf-btn");
+
+        if (content.style.maxHeight === "0px" || !content.style.maxHeight) {
+            content.style.maxHeight = content.scrollHeight + "px";
+            content.style.borderColor = "#d4af37";
+            btn.style.borderRadius = "15px 15px 0 0";
+            icon.style.transform = "rotate(180deg)";
+        } else {
+            content.style.maxHeight = "0px";
+            setTimeout(() => {
+                content.style.borderColor = "transparent";
+                btn.style.borderRadius = "15px";
+            }, 300);
+            icon.style.transform = "rotate(0deg)";
+        }
+    }
+
+    // SCRIPT DEL COUNTDOWN AGGIORNATO (Venerdì 19 Giugno alle ore 21:00)
+    const dataPartita = new Date("June 19, 2026 21:00:00").getTime();
 
     const x = setInterval(function() {
         const adesso = new Date().getTime();
@@ -179,7 +235,5 @@
         }
     }, 1000);
 </script>
-
-<script src="script.js"></script>
 </body>
 </html>
