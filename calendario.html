@@ -29,49 +29,6 @@
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
-        .countdown-container {
-            background: #151515;
-            border: 2px solid #d4af37;
-            border-radius: 20px;
-            padding: 30px;
-            margin: 40px auto;
-            max-width: 600px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-        .countdown-title {
-            font-size: 1.5rem;
-            color: #d4af37;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        .time-box {
-            background: #090909;
-            border: 1px solid #333;
-            border-radius: 10px;
-            padding: 15px;
-            min-width: 90px;
-        }
-        .time-box span {
-            display: block;
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: white;
-        }
-        .time-box label {
-            font-size: 0.8rem;
-            color: #888;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-top: 5px;
-            display: block;
-        }
         .back-btn-container {
             margin-top: 40px;
             text-align: center;
@@ -127,6 +84,7 @@
     <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">CALENDARIO GARE</h2>
     <p style="font-size: 1.2rem; color: #888; margin-bottom: 30px;">Torneo Conti Young - Stagione 2025/2026</p>
 
+    <!-- 1A GIORNATA -->
     <div style="background: #111; border: 1px solid #222; border-radius: 20px; padding: 20px; margin-bottom: 40px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">
         <h3 style="color: #d4af37; font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Girone M - 1a Giornata</h3>
         
@@ -135,14 +93,14 @@
         </div>
 
         <div class="media-single-container" style="margin-top: 10px; margin-bottom: 10px; max-width: 550px;">
-            <button class="conf-btn" onclick="toggleConferenza()" style="width: 100%; background: #151515; color: #d4af37; border: 2px solid #d4af37; padding: 15px 20px; font-size: 1.1rem; font-weight: 700; border-radius: 15px; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px;">
-                <i class="fas fa-microphone"></i> Conferenza Stampa Post-Gara <i id="conf-icon" class="fas fa-chevron-down" style="transition: 0.3s;"></i>
+            <button class="conf-btn" onclick="toggleConferenza('conferenza-marocco', 'icon-marocco', this)" style="width: 100%; background: #151515; color: #d4af37; border: 2px solid #d4af37; padding: 15px 20px; font-size: 1.1rem; font-weight: 700; border-radius: 15px; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px;">
+                <i class="fas fa-microphone"></i> Conferenza Stampa Post-Gara <i id="icon-marocco" class="fas fa-chevron-down" style="transition: 0.3s;"></i>
             </button>
 
-            <div id="conferenza-content" style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #090909; border-radius: 0 0 15px 15px; margin-top: -5px; border: 2px solid transparent; border-top: none;">
+            <div id="conferenza-marocco" style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #090909; border-radius: 0 0 15px 15px; margin-top: -5px; border: 2px solid transparent; border-top: none;">
                 <div style="padding: 25px 20px; text-align: center;">
                     
-                    <img src="confsta.JPG" alt="Conferenza Stampa" style="max-width: 100%; width: 100%; border: 2px solid #d4af37; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.6); margin-bottom: 25px;">
+                    <img src="confsta.JPG" alt="Conferenza Stampa Marocco" style="max-width: 100%; width: 100%; border: 2px solid #d4af37; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.6); margin-bottom: 25px;">
                     
                     <div style="color: #ffffff; text-align: left; line-height: 1.7; font-size: 1.05rem; font-family: 'Montserrat', sans-serif;">
                         <p style="margin-bottom: 15px;">Al termine della gara contro il Marocco, conclusa sul 6-2, Mr Führer e Mr Mourinho hanno espresso soddisfazione per il risultato ma non per la prestazione.</p>
@@ -161,17 +119,38 @@
         </div>
     </div>
 
-    <div class="countdown-container">
-        <div class="media-single-container" style="margin-top: 0; margin-bottom: 20px;">
-            <img src="vsCote.JPG" alt="Germania vs Costa d'Avorio" class="match-poster">
+    <!-- 2A GIORNATA -->
+    <div style="background: #111; border: 1px solid #222; border-radius: 20px; padding: 20px; margin-bottom: 40px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">
+        <h3 style="color: #d4af37; font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Girone M - 2a Giornata</h3>
+        
+        <div class="media-single-container" style="margin-top: 10px; margin-bottom: 20px;">
+            <img src="risvsCostaa.jpg" alt="Germania vs Costa d'Avorio" class="match-poster">
         </div>
-        <div class="countdown-title">PROSSIMO MATCH: vs COSTA D'AVORIO</div>
-        <div style="color: #aaa; font-weight: 600; margin-top: -10px; margin-bottom: 20px; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 1px;">Venerdì 19 Giugno alle ore 21:00</div>
-        <div class="countdown">
-            <div class="time-box"><span id="days">00</span><label>Giorni</label></div>
-            <div class="time-box"><span id="hours">00</span><label>Ore</label></div>
-            <div class="time-box"><span id="minutes">00</span><label>Minuti</label></div>
-            <div class="time-box"><span id="seconds">00</span><label>Secondi</label></div>
+
+        <div class="media-single-container" style="margin-top: 10px; margin-bottom: 10px; max-width: 550px;">
+            <button class="conf-btn" onclick="toggleConferenza('conferenza-costa', 'icon-costa', this)" style="width: 100%; background: #151515; color: #d4af37; border: 2px solid #d4af37; padding: 15px 20px; font-size: 1.1rem; font-weight: 700; border-radius: 15px; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px;">
+                <i class="fas fa-microphone"></i> Conferenza Stampa Post-Gara <i id="icon-costa" class="fas fa-chevron-down" style="transition: 0.3s;"></i>
+            </button>
+
+            <div id="conferenza-costa" style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #090909; border-radius: 0 0 15px 15px; margin-top: -5px; border: 2px solid transparent; border-top: none;">
+                <div style="padding: 25px 20px; text-align: center;">
+                    
+                    <img src="confsta.JPG" alt="Conferenza Stampa Costa d'Avorio" style="max-width: 100%; width: 100%; border: 2px solid #d4af37; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.6); margin-bottom: 25px;">
+                    
+                    <div style="color: #ffffff; text-align: left; line-height: 1.7; font-size: 1.05rem; font-family: 'Montserrat', sans-serif;">
+                        <p style="margin-bottom: 15px;">Al termine della straordinaria vittoria per 9-2 contro la Costa d'Avorio, la guida tecnica ha espresso enorme soddisfazione per il gioco espresso e la cattiveria sotto porta.</p>
+                        
+                        <p style="margin-bottom: 15px;">Una prestazione dominante dall'inizio alla fine che lancia un segnale chiaro a tutto il torneo: la Germania Conti Young è in uno stato di forma eccellente e gioca per lasciare il segno.</p>
+                        
+                        <blockquote style="border-left: 3px solid #d4af37; padding-left: 15px; margin: 20px 0; font-style: italic; color: #e0e0e0; font-size: 1.1rem;">
+                            «Siamo entrati in campo determinati e concentrati. Il risultato rispecchia i nostri sforzi in allenamento, ma continuiamo a lavorare a testa bassa», le parole a caldo del post-gara.
+                        </blockquote>
+                        
+                        <p style="font-weight: 600; color: #d4af37; margin-top: 15px;">Altri tre punti fondamentali che blindano la testa del girone a punteggio pieno.</p>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 
@@ -191,11 +170,10 @@
 
 <script src="script.js"></script>
 <script>
-    // FUNZIONE DI APERTURA/CHIUSURA ACCORDION CONFERENZA STAMPA
-    function toggleConferenza() {
-        const content = document.getElementById("conferenza-content");
-        const icon = document.getElementById("conf-icon");
-        const btn = document.querySelector(".conf-btn");
+    // FUNZIONE DI APERTURA/CHIUSURA ACCORDION CONFERENZA STAMPA MULTIPLA
+    function toggleConferenza(contentId, iconId, btn) {
+        const content = document.getElementById(contentId);
+        const icon = document.getElementById(iconId);
 
         if (content.style.maxHeight === "0px" || !content.style.maxHeight) {
             content.style.maxHeight = content.scrollHeight + "px";
@@ -211,32 +189,6 @@
             icon.style.transform = "rotate(0deg)";
         }
     }
-
-    // SCRIPT DEL COUNTDOWN AGGIORNATO (Venerdì 19 Giugno alle ore 21:00)
-    const dataPartita = new Date("June 19, 2026 21:00:00").getTime();
-
-    const x = setInterval(function() {
-        const adesso = new Date().getTime();
-        const distanza = dataPartita - adesso;
-
-        const giorni = Math.floor(distanza / (1000 * 60 * 60 * 24));
-        const ore = Math.floor((distanza % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minuti = Math.floor((distanza % (1000 * 60 * 60)) / (1000 * 60));
-        const secondi = Math.floor((distanza % (1000 * 60)) / 1000);
-
-        if (distanza < 0) {
-            clearInterval(x);
-            document.getElementById("days").innerHTML = "00";
-            document.getElementById("hours").innerHTML = "00";
-            document.getElementById("minutes").innerHTML = "00";
-            document.getElementById("seconds").innerHTML = "00";
-        } else {
-            document.getElementById("days").innerHTML = giorni < 10 ? "0" + giorni : giorni;
-            document.getElementById("hours").innerHTML = ore < 10 ? "0" + ore : ore;
-            document.getElementById("minutes").innerHTML = minuti < 10 ? "0" + minuti : minuti;
-            document.getElementById("seconds").innerHTML = secondi < 10 ? "0" + secondi : secondi;
-        }
-    }, 1000);
 </script>
 </body>
 </html>

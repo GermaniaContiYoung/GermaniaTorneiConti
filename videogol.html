@@ -61,6 +61,15 @@
             width: 100%;
             margin-top: 35px;
         }
+        
+        /* Forza l'ultimo elemento dispari (Raparelli) al centro */
+        .grid-costa .stat-card:last-child {
+            grid-column: span 2;
+            max-width: calc(50% - 10px);
+            margin: 0 auto;
+            width: 100%;
+        }
+
         .stat-card {
             background: #090909;
             border: 1px solid #222;
@@ -165,17 +174,30 @@
     
     <div class="player-profile">
         <h3 id="main-title" style="font-size: 2.2rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: white;">
-            Gol vs Marocco
+            Seleziona una Partita
         </h3>
         
+        <!-- SEZIONE POSTER (INIZIALE) -->
         <div id="step-poster" style="width: 100%;">
             <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
                 Clicca sulla locandina per vedere i Marcatori
             </p>
-            <img src="vsMarocco.JPG" alt="Risultato Finale vs Marocco" class="match-result-poster" onclick="mostraMarcatori()">
+            
+            <!-- LOCANDINA MAROCCO -->
+            <div style="margin-bottom: 40px;">
+                <h4 style="color: #d4af37; margin-top: 20px; font-weight: 700;">Girone M - Giornata 1</h4>
+                <img src="vsMarocco.JPG" alt="Risultato Finale vs Marocco" class="match-result-poster" onclick="mostraMarcatori('marocco')">
+            </div>
+
+            <!-- LOCANDINA COSTA D'AVORIO -->
+            <div style="margin-top: 20px; border-top: 1px solid #222; padding-top: 20px;">
+                <h4 style="color: #d4af37; font-weight: 700;">Girone M - Giornata 2</h4>
+                <img src="risvsCostaa.JPG" alt="Risultato Finale vs Costa d'Avorio" class="match-result-poster" onclick="mostraMarcatori('costa')">
+            </div>
         </div>
 
-        <div id="step-markers" class="markers-section">
+        <!-- SEZIONE MARCATORI MAROCCO -->
+        <div id="step-markers-marocco" class="markers-section">
             <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
                 Seleziona un giocatore per vedere i gol
             </p>
@@ -191,31 +213,78 @@
                     <p>2 Gol <i class="fas fa-chevron-right" style="font-size: 0.9rem;"></i></p>
                 </div>
 
-                <div class="stat-card" onclick="avviaVideo('marone1', 'Christian Marone', 'markers')">
+                <div class="stat-card" onclick="avviaVideo('marone1', 'Christian Marone', 'marocco')">
                     <h4>Christian Marone</h4>
                     <p>1 Gol <i class="fas fa-play-circle"></i></p>
                 </div>
 
-                <div class="stat-card" onclick="avviaVideo('ruotolo1', 'Danilo Ruotolo', 'markers')">
+                <div class="stat-card" onclick="avviaVideo('ruotolo1', 'Danilo Ruotolo', 'marocco')">
                     <h4>Danilo Ruotolo</h4>
                     <p>1 Gol <i class="fas fa-play-circle"></i></p>
                 </div>
             </div>
             
-            <button class="action-btn" onclick="tornaAlPoster()" style="margin-top: 30px;">← Torna al Risultato</button>
+            <button class="action-btn" onclick="tornaAlPoster()" style="margin-top: 30px;">← Torna alle Partite</button>
         </div>
 
+        <!-- SEZIONE MARCATORI COSTA D'AVORIO -->
+        <div id="step-markers-costa" class="markers-section">
+            <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
+                Seleziona un giocatore per vedere i gol
+            </p>
+            
+            <div class="stats-grid grid-costa">
+                <div class="stat-card" onclick="sceltaGolMultipli('marone', 'Christian Marone', false, 'cot')">
+                    <h4>Christian Marone</h4>
+                    <p>2 Gol <i class="fas fa-chevron-right" style="font-size: 0.9rem;"></i></p>
+                </div>
+
+                <div class="stat-card" onclick="sceltaGolMultipli('loturco', 'Andrea Lo Turco', false, 'cot')">
+                    <h4>Andrea Lo Turco</h4>
+                    <p>2 Gol <i class="fas fa-chevron-right" style="font-size: 0.9rem;"></i></p>
+                </div>
+
+                <div class="stat-card" onclick="avviaVideo('giovannetti1cot', 'Emanuele Giovannetti', 'costa')">
+                    <h4>Emanuele Giovannetti</h4>
+                    <p>1 Gol <i class="fas fa-play-circle"></i></p>
+                </div>
+
+                <div class="stat-card" onclick="avviaVideo('franci1cot', 'Cristian Franci', 'costa')">
+                    <h4>Cristian Franci</h4>
+                    <p>1 Gol <i class="fas fa-play-circle"></i></p>
+                </div>
+
+                <div class="stat-card" onclick="avviaVideo('mastromattei1cot', 'Daniele Mastromattei', 'costa')">
+                    <h4>Daniele Mastromattei</h4>
+                    <p>1 Gol <i class="fas fa-play-circle"></i></p>
+                </div>
+
+                <div class="stat-card" onclick="avviaVideo('potente1cot', 'Lorenzo Potente', 'costa')">
+                    <h4>Lorenzo Potente</h4>
+                    <p>1 Gol <i class="fas fa-play-circle"></i></p>
+                </div>
+
+                <div class="stat-card" onclick="avviaVideo('raparelli1cot', 'Matteo Raparelli', 'costa')">
+                    <h4>Matteo Raparelli</h4>
+                    <p>1 Gol <i class="fas fa-play-circle"></i></p>
+                </div>
+            </div>
+            
+            <button class="action-btn" onclick="tornaAlPoster()" style="margin-top: 30px;">← Torna alle Partite</button>
+        </div>
+
+        <!-- SEZIONE SOTTOMENU GOL MULTIPLI -->
         <div id="step-sub-selection" class="sub-selection-section">
             <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
                 Scegli quale rete vuoi guardare
             </p>
             
-            <div class="stats-grid" id="sub-selection-grid">
-                </div>
+            <div class="stats-grid" id="sub-selection-grid"></div>
             
-            <button class="action-btn" onclick="tornaAiMarcatori()" style="margin-top: 30px;">← Torna Indietro</button>
+            <button class="action-btn" id="sub-back-btn" onclick="tornaAiMarcatori()">← Torna Indietro</button>
         </div>
 
+        <!-- SEZIONE PLAYER VIDEO -->
         <div id="step-video" class="video-section">
             <p id="video-subtitle" style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
                 Guarda l'azione del gol
@@ -245,34 +314,45 @@
 <script>
     let giocatoreSelezionatoCorrente = '';
     let nomeGiocatoreCorrente = '';
+    let partitaCorrente = '';
 
-    function mostraMarcatori() {
+    function mostraMarcatori(partita) {
+        partitaCorrente = partita;
         document.getElementById('step-poster').style.display = 'none';
-        document.getElementById('step-markers').style.display = 'block';
         document.getElementById('step-sub-selection').style.display = 'none';
         document.getElementById('step-video').style.display = 'none';
-        document.getElementById('main-title').innerText = "Gol vs Marocco";
+        
+        if (partita === 'marocco') {
+            document.getElementById('step-markers-marocco').style.display = 'block';
+            document.getElementById('step-markers-costa').style.display = 'none';
+            document.getElementById('main-title').innerText = "Gol vs Marocco";
+        } else if (partita === 'costa') {
+            document.getElementById('step-markers-marocco').style.display = 'none';
+            document.getElementById('step-markers-costa').style.display = 'block';
+            document.getElementById('main-title').innerText = "Gol vs Costa d'Avorio";
+        }
     }
 
     function tornaAlPoster() {
-        document.getElementById('step-markers').style.display = 'none';
+        document.getElementById('step-markers-marocco').style.display = 'none';
+        document.getElementById('step-markers-costa').style.display = 'none';
         document.getElementById('step-poster').style.display = 'block';
+        document.getElementById('main-title').innerText = "Seleziona una Partita";
     }
 
-    // Gestisce il sottomenu e inverte l'ordine dei video se richiesto (per Giova)
-    function sceltaGolMultipli(prefissoFile, nomeGiocatore, deveInvertire) {
+    function sceltaGolMultipli(prefissoFile, nomeGiocatore, deveInvertire, suffissoPartita = '') {
         giocatoreSelezionatoCorrente = prefissoFile;
         nomeGiocatoreCorrente = nomeGiocatore;
 
         document.getElementById('main-title').innerText = nomeGiocatore;
-        document.getElementById('step-markers').style.display = 'none';
+        document.getElementById('step-markers-marocco').style.display = 'none';
+        document.getElementById('step-markers-costa').style.display = 'none';
         
         const grid = document.getElementById('sub-selection-grid');
         grid.innerHTML = ''; 
         
-        // Se deve invertire (Giova): 1° Gol -> file 2, 2° Gol -> file 1
-        const fileGol1 = deveInvertire ? prefissoFile + "2" : prefissoFile + "1";
-        const fileGol2 = deveInvertire ? prefissoFile + "1" : prefissoFile + "2";
+        const fileGol1 = deveInvertire ? prefissoFile + "2" + suffissoPartita : prefissoFile + "1" + suffissoPartita;
+        const fileGol2 = deveInvertire ? prefissoFile + "1" + suffissoPartita : prefissoFile + "2" + suffissoPartita;
 
         grid.innerHTML = `
             <div class="stat-card" onclick="avviaVideo('${fileGol1}', '${nomeGiocatore} (1° Gol)', 'sub-menu')">
@@ -291,8 +371,14 @@
     function tornaAiMarcatori() {
         document.getElementById('step-sub-selection').style.display = 'none';
         document.getElementById('step-video').style.display = 'none';
-        document.getElementById('step-markers').style.display = 'block';
-        document.getElementById('main-title').innerText = "Gol vs Marocco";
+        
+        if (partitaCorrente === 'marocco') {
+            document.getElementById('step-markers-marocco').style.display = 'block';
+            document.getElementById('main-title').innerText = "Gol vs Marocco";
+        } else {
+            document.getElementById('step-markers-costa').style.display = 'block';
+            document.getElementById('main-title').innerText = "Gol vs Costa d'Avorio";
+        }
     }
 
     function avviaVideo(nomeCompletoFile, titoloSchermata, provenienza) {
@@ -305,8 +391,9 @@
         
         document.getElementById('main-title').innerText = titoloSchermata;
         
-        if (provenienza === 'markers') {
-            document.getElementById('step-markers').style.display = 'none';
+        if (provenienza === 'marocco' || provenienza === 'costa') {
+            document.getElementById('step-markers-marocco').style.display = 'none';
+            document.getElementById('step-markers-costa').style.display = 'none';
             document.getElementById('video-back-btn').setAttribute('onclick', 'tornaAiMarcatori()');
         } else {
             document.getElementById('step-sub-selection').style.display = 'none';
