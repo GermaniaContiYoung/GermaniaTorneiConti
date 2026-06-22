@@ -385,7 +385,14 @@
         const player = document.getElementById('main-video-player');
         const source = document.getElementById('video-source');
         
-        source.src = nomeCompletoFile + ".mp4";
+        // CORREZIONE CASE-SENSITIVE PER GITHUB:
+        // Se il file finisce con "cot" (Costa d'Avorio), usa l'estensione maiuscola .MP4
+        if (nomeCompletoFile.endsWith('cot')) {
+            source.src = nomeCompletoFile + ".MP4";
+        } else {
+            source.src = nomeCompletoFile + ".mp4";
+        }
+        
         player.load();
         player.play();
         
