@@ -51,6 +51,35 @@
             margin-top: 30px;
             margin-bottom: 20px;
         }
+
+        /* Stili specifici per la tabella delle opzioni */
+        .options-table {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto 10px auto;
+            border-collapse: collapse;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .options-table th {
+            background-color: #151515;
+            color: #fff;
+            padding: 15px;
+            border: 2px solid #d4af37;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            width: 50%;
+        }
+        .options-table th:hover {
+            background-color: #d4af37;
+            color: #151515;
+        }
+        /* Classe per evidenziare l'opzione attiva */
+        .options-table th.active {
+            background-color: #d4af37;
+            color: #151515;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 <body>
@@ -84,9 +113,18 @@
 </header>
 
 <div class="map-container">
-    <h2>IL NOSTRO CAMPO DA GIOCO</h2>
-    <p>Ci alleniamo presso la <b>SSD Airone</b> in Via del Quadraro, Roma.</p>
-    <p>Si trova a 2 minuti dalla fermata <b>MA Lucio Sestio.</b></p>
+    <h2>I NOSTRI CAMPI DA GIOCO</h2>
+    <p>Seleziona un'opzione dalla tabella per visualizzare la posizione esatta sulla mappa.</p>
+    
+    <!-- Tabella Opzioni Interattiva -->
+    <table class="options-table">
+        <thead>
+            <tr>
+                <th id="btn-opzioneA" onclick="mostraOpzione('opzioneA')">OPZIONE A - SSD AIRONE</th>
+                <th id="btn-opzioneB" onclick="mostraOpzione('opzioneB')">OPZIONE B - POL. OSTIENSE</th>
+            </tr>
+        </thead>
+    </table>
     
     <div id="map"></div>
 
@@ -105,15 +143,55 @@
 </footer>
 
 <script>
-    var lat = 41.8647;
-    var lng = 12.5332;
-    var map = L.map('map').setView([lat, lng], 17);
+    // 1. Configurazione dati geografici reali dei campi da gioco
+    const opzioniMappa = {
+        opzioneA: {
+            lat: 41.8647,
+            lng: 12.5332,
+            popup: "<b>SSD Airone (Tuscolana)</b><br>Via del Quadraro 35 A<br>A 3 minuti dalla metro MA Lucio Sestio."
+        },
+        opzioneB: {
+            lat: 41.8532, 
+            lng: 12.4705,
+            popup: "<b>Polisportiva Ostiense</b><br>Via Lungotevere Dante 3"
+        }
+    };
+
+    // 2. Inizializzazione della mappa "vuota" all'avvio
+    // Centrata sul centro di Roma con zoom 11 per mostrare l'intera città proprio come in image_8d2cc4.jpg
+    var map = L.map('map').setView([41.8902, 12.4922], 11);
+    
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; OpenStreetMap'
     }).addTo(map);
-    var marker = L.marker([lat, lng]).addTo(map);
-    marker.bindPopup("<b>SSD Airone</b><br>Campo di allenamento della Germania.").openPopup();
+
+    // Variabile di supporto per gestire l'unico marker visibile alla volta
+    var currentMarker = null;
+
+    // 3. Funzione per aggiornare la mappa al click della tabella
+    function mostraOpzione(scelta) {
+        const dati = opzioniMappa[scelta];
+        
+        if (dati) {
+            // Rimuove il vecchio marker se presente sulla mappa
+            if (currentMarker) {
+                map.removeLayer(currentMarker);
+            }
+            
+            // Sposta la visuale ed effettua uno zoom ravvicinato (17) sul campo selezionato
+            map.setView([dati.lat, dati.lng], 17);
+            
+            // Crea il nuovo marker, lo aggiunge e apre il Popup informativo
+            currentMarker = L.marker([dati.lat, dati.lng]).addTo(map);
+            currentMarker.bindPopup(dati.popup).openPopup();
+            
+            // Aggiorna le classi CSS per dare il feedback visivo sulla tabella
+            document.getElementById('btn-opzioneA').classList.remove('active');
+            document.getElementById('btn-opzioneB').classList.remove('active');
+            document.getElementById('btn-' + scelta).classList.add('active');
+        }
+    }
 </script>
 
 </body>
