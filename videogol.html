@@ -62,8 +62,16 @@
             margin-top: 35px;
         }
         
-        /* Forza l'ultimo elemento dispari (Raparelli) al centro */
+        /* Forza l'ultimo elemento dispari (Raparelli) al centro nella Costa d'Avorio */
         .grid-costa .stat-card:last-child {
+            grid-column: span 2;
+            max-width: calc(50% - 10px);
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Forza l'ultimo elemento dispari (Murariu) al centro nell'Argentina */
+        .grid-argentina .stat-card:last-child {
             grid-column: span 2;
             max-width: calc(50% - 10px);
             margin: 0 auto;
@@ -177,38 +185,39 @@
             Seleziona una Partita
         </h3>
         
-        <!-- SEZIONE POSTER (INIZIALE) -->
         <div id="step-poster" style="width: 100%;">
             <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
                 Clicca sulla locandina per vedere i Marcatori
             </p>
             
-            <!-- LOCANDINA MAROCCO -->
             <div style="margin-bottom: 40px;">
                 <h4 style="color: #d4af37; margin-top: 20px; font-weight: 700;">Girone M - Giornata 1</h4>
                 <img src="vsMarocco.JPG" alt="Risultato Finale vs Marocco" class="match-result-poster" onclick="mostraMarcatori('marocco')">
             </div>
 
-            <!-- LOCANDINA COSTA D'AVORIO -->
-            <div style="margin-top: 20px; border-top: 1px solid #222; padding-top: 20px;">
+            <div style="margin-bottom: 40px; border-top: 1px solid #222; padding-top: 20px;">
                 <h4 style="color: #d4af37; font-weight: 700;">Girone M - Giornata 2</h4>
                 <img src="risvsCostaa.JPG" alt="Risultato Finale vs Costa d'Avorio" class="match-result-poster" onclick="mostraMarcatori('costa')">
             </div>
+
+            <div style="margin-top: 20px; border-top: 1px solid #222; padding-top: 20px;">
+                <h4 style="color: #d4af37; font-weight: 700;">Girone M - Giornata 3</h4>
+                <img src="vsArgentina.jpg" alt="Risultato Finale vs Argentina" class="match-result-poster" onclick="mostraMarcatori('argentina')">
+            </div>
         </div>
 
-        <!-- SEZIONE MARCATORI MAROCCO -->
         <div id="step-markers-marocco" class="markers-section">
             <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
                 Seleziona un giocatore per vedere i gol
             </p>
             
             <div class="stats-grid">
-                <div class="stat-card" onclick="sceltaGolMultipli('cofani', 'Davide Cofani', false)">
+                <div class="stat-card" onclick="sceltaGolMultipli('cofani', 'Davide Cofani', false, 2)">
                     <h4>Davide Cofani</h4>
                     <p>2 Gol <i class="fas fa-chevron-right" style="font-size: 0.9rem;"></i></p>
                 </div>
 
-                <div class="stat-card" onclick="sceltaGolMultipli('giova', 'Emanuele Giovannetti', true)">
+                <div class="stat-card" onclick="sceltaGolMultipli('giova', 'Emanuele Giovannetti', true, 2)">
                     <h4>Emanuele Giovannetti</h4>
                     <p>2 Gol <i class="fas fa-chevron-right" style="font-size: 0.9rem;"></i></p>
                 </div>
@@ -227,19 +236,18 @@
             <button class="action-btn" onclick="tornaAlPoster()" style="margin-top: 30px;">← Torna alle Partite</button>
         </div>
 
-        <!-- SEZIONE MARCATORI COSTA D'AVORIO -->
         <div id="step-markers-costa" class="markers-section">
             <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
                 Seleziona un giocatore per vedere i gol
             </p>
             
             <div class="stats-grid grid-costa">
-                <div class="stat-card" onclick="sceltaGolMultipli('marone', 'Christian Marone', false, 'cot')">
+                <div class="stat-card" onclick="sceltaGolMultipli('marone', 'Christian Marone', false, 2, 'cot')">
                     <h4>Christian Marone</h4>
                     <p>2 Gol <i class="fas fa-chevron-right" style="font-size: 0.9rem;"></i></p>
                 </div>
 
-                <div class="stat-card" onclick="sceltaGolMultipli('loturco', 'Andrea Lo Turco', false, 'cot')">
+                <div class="stat-card" onclick="sceltaGolMultipli('loturco', 'Andrea Lo Turco', false, 2, 'cot')">
                     <h4>Andrea Lo Turco</h4>
                     <p>2 Gol <i class="fas fa-chevron-right" style="font-size: 0.9rem;"></i></p>
                 </div>
@@ -273,7 +281,31 @@
             <button class="action-btn" onclick="tornaAlPoster()" style="margin-top: 30px;">← Torna alle Partite</button>
         </div>
 
-        <!-- SEZIONE SOTTOMENU GOL MULTIPLI -->
+        <div id="step-markers-argentina" class="markers-section">
+            <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
+                Seleziona un giocatore per vedere i gol
+            </p>
+            
+            <div class="stats-grid grid-argentina">
+                <div class="stat-card" onclick="sceltaGolMultipli('giova', 'Emanuele Giovannetti', false, 4, 'arg')">
+                    <h4>Emanuele Giovannetti</h4>
+                    <p>4 Gol <i class="fas fa-chevron-right" style="font-size: 0.9rem;"></i></p>
+                </div>
+
+                <div class="stat-card" onclick="sceltaGolMultipli('loturco', 'Andrea Lo Turco', false, 3, 'arg')">
+                    <h4>Andrea Lo Turco</h4>
+                    <p>3 Gol <i class="fas fa-chevron-right" style="font-size: 0.9rem;"></i></p>
+                </div>
+
+                <div class="stat-card" onclick="avviaVideo('murariu1arg', 'Cristian Murariu', 'argentina')">
+                    <h4>Cristian Murariu</h4>
+                    <p>1 Gol <i class="fas fa-play-circle"></i></p>
+                </div>
+            </div>
+            
+            <button class="action-btn" onclick="tornaAlPoster()" style="margin-top: 30px;">← Torna alle Partite</button>
+        </div>
+
         <div id="step-sub-selection" class="sub-selection-section">
             <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
                 Scegli quale rete vuoi guardare
@@ -284,7 +316,6 @@
             <button class="action-btn" id="sub-back-btn" onclick="tornaAiMarcatori()">← Torna Indietro</button>
         </div>
 
-        <!-- SEZIONE PLAYER VIDEO -->
         <div id="step-video" class="video-section">
             <p id="video-subtitle" style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
                 Guarda l'azione del gol
@@ -299,16 +330,26 @@
             <button class="action-btn" id="video-back-btn" onclick="">← Torna Indietro</button>
         </div>
     </div>
+</div>
 
+<div style="text-align:center; margin-top:40px;">
     <a href="index.html" class="back-btn">← Torna alla Home</a>
 </div>
 
-<footer id="contatti" style="margin-top: 60px;">
+
+<footer id="contatti">
     <div class="footer-social">
-        <a href="https://www.instagram.com/germania_torneicontiyoung?utm_source=qr" target="_blank" class="instagram"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="https://www.tiktok.com/@germania_torneiconti2k26?_r=1&_t=ZN-96xFqH0A2fG" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+        <a href="https://www.instagram.com/germania_torneicontiyoung?utm_source=qr" target="_blank" class="instagram">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+
+        <a href="https://www.tiktok.com/@germania_torneiconti2k26?_r=1&_t=ZN-96xFqH0A2fG" target="_blank" class="tiktok">
+            <i class="fab fa-tiktok"></i> TikTok
+        </a>
     </div>
-    <p style="margin-top: 20px;">© 2025 - 2026 Germania Conti Young</p>
+
+    <p style="margin-top:20px;">© 2025 - 2026 Germania Conti Young</p>
+    <p>Roma - Torneo Conti Young</p>
 </footer>
 
 <script>
@@ -322,48 +363,68 @@
         document.getElementById('step-sub-selection').style.display = 'none';
         document.getElementById('step-video').style.display = 'none';
         
+        document.getElementById('step-markers-marocco').style.display = 'none';
+        document.getElementById('step-markers-costa').style.display = 'none';
+        document.getElementById('step-markers-argentina').style.display = 'none';
+
         if (partita === 'marocco') {
             document.getElementById('step-markers-marocco').style.display = 'block';
-            document.getElementById('step-markers-costa').style.display = 'none';
             document.getElementById('main-title').innerText = "Gol vs Marocco";
         } else if (partita === 'costa') {
-            document.getElementById('step-markers-marocco').style.display = 'none';
             document.getElementById('step-markers-costa').style.display = 'block';
             document.getElementById('main-title').innerText = "Gol vs Costa d'Avorio";
+        } else if (partita === 'argentina') {
+            document.getElementById('step-markers-argentina').style.display = 'block';
+            document.getElementById('main-title').innerText = "Gol vs Argentina";
         }
     }
 
     function tornaAlPoster() {
         document.getElementById('step-markers-marocco').style.display = 'none';
         document.getElementById('step-markers-costa').style.display = 'none';
+        document.getElementById('step-markers-argentina').style.display = 'none';
         document.getElementById('step-poster').style.display = 'block';
         document.getElementById('main-title').innerText = "Seleziona una Partita";
     }
 
-    function sceltaGolMultipli(prefissoFile, nomeGiocatore, deveInvertire, suffissoPartita = '') {
+    function sceltaGolMultipli(prefissoFile, nomeGiocatore, deveInvertire, numeroGol, suffissoPartita = '') {
         giocatoreSelezionatoCorrente = prefissoFile;
         nomeGiocatoreCorrente = nomeGiocatore;
 
         document.getElementById('main-title').innerText = nomeGiocatore;
         document.getElementById('step-markers-marocco').style.display = 'none';
         document.getElementById('step-markers-costa').style.display = 'none';
+        document.getElementById('step-markers-argentina').style.display = 'none';
         
         const grid = document.getElementById('sub-selection-grid');
         grid.innerHTML = ''; 
         
-        const fileGol1 = deveInvertire ? prefissoFile + "2" + suffissoPartita : prefissoFile + "1" + suffissoPartita;
-        const fileGol2 = deveInvertire ? prefissoFile + "1" + suffissoPartita : prefissoFile + "2" + suffissoPartita;
+        if (numeroGol === 2) {
+            const fileGol1 = deveInvertire ? prefissoFile + "2" + suffissoPartita : prefissoFile + "1" + suffissoPartita;
+            const fileGol2 = deveInvertire ? prefissoFile + "1" + suffissoPartita : prefissoFile + "2" + suffissoPartita;
 
-        grid.innerHTML = `
-            <div class="stat-card" onclick="avviaVideo('${fileGol1}', '${nomeGiocatore} (1° Gol)', 'sub-menu')">
-                <h4>1° GOL</h4>
-                <p>Guarda il Video <i class="fas fa-play-circle"></i></p>
-            </div>
-            <div class="stat-card" onclick="avviaVideo('${fileGol2}', '${nomeGiocatore} (2° Gol)', 'sub-menu')">
-                <h4>2° GOL</h4>
-                <p>Guarda il Video <i class="fas fa-play-circle"></i></p>
-            </div>
-        `;
+            grid.innerHTML = `
+                <div class="stat-card" onclick="avviaVideo('${fileGol1}', '${nomeGiocatore} (1° Gol)', 'sub-menu')">
+                    <h4>1° GOL</h4>
+                    <p>Guarda il Video <i class="fas fa-play-circle"></i></p>
+                </div>
+                <div class="stat-card" onclick="avviaVideo('${fileGol2}', '${nomeGiocatore} (2° Gol)', 'sub-menu')">
+                    <h4>2° GOL</h4>
+                    <p>Guarda il Video <i class="fas fa-play-circle"></i></p>
+                </div>
+            `;
+        } else {
+            // Genera automaticamente i bottoni per 3 o 4 gol (Argentina)
+            for (let i = 1; i <= numeroGol; i++) {
+                let fileGol = prefissoFile + i + suffissoPartita;
+                grid.innerHTML += `
+                    <div class="stat-card" onclick="avviaVideo('${fileGol}', '${nomeGiocatore} (${i}° Gol)', 'sub-menu')">
+                        <h4>${i}° GOL</h4>
+                        <p>Guarda il Video <i class="fas fa-play-circle"></i></p>
+                    </div>
+                `;
+            }
+        }
         
         document.getElementById('step-sub-selection').style.display = 'block';
     }
@@ -375,9 +436,12 @@
         if (partitaCorrente === 'marocco') {
             document.getElementById('step-markers-marocco').style.display = 'block';
             document.getElementById('main-title').innerText = "Gol vs Marocco";
-        } else {
+        } else if (partitaCorrente === 'costa') {
             document.getElementById('step-markers-costa').style.display = 'block';
             document.getElementById('main-title').innerText = "Gol vs Costa d'Avorio";
+        } else {
+            document.getElementById('step-markers-argentina').style.display = 'block';
+            document.getElementById('main-title').innerText = "Gol vs Argentina";
         }
     }
 
@@ -385,11 +449,11 @@
         const player = document.getElementById('main-video-player');
         const source = document.getElementById('video-source');
         
-        // CORREZIONE CASE-SENSITIVE PER GITHUB:
-        // Se il file finisce con "cot" (Costa d'Avorio), usa l'estensione maiuscola .MP4
+        // Se il file termina con "cot", usa l'estensione maiuscola .MP4
         if (nomeCompletoFile.endsWith('cot')) {
             source.src = nomeCompletoFile + ".MP4";
         } else {
+            // Tutti gli altri inclusi i file dell'Argentina (.mp4 minuscolo)
             source.src = nomeCompletoFile + ".mp4";
         }
         
@@ -398,9 +462,10 @@
         
         document.getElementById('main-title').innerText = titoloSchermata;
         
-        if (provenienza === 'marocco' || provenienza === 'costa') {
+        if (provenienza === 'marocco' || provenienza === 'costa' || provenienza === 'argentina') {
             document.getElementById('step-markers-marocco').style.display = 'none';
             document.getElementById('step-markers-costa').style.display = 'none';
+            document.getElementById('step-markers-argentina').style.display = 'none';
             document.getElementById('video-back-btn').setAttribute('onclick', 'tornaAiMarcatori()');
         } else {
             document.getElementById('step-sub-selection').style.display = 'none';

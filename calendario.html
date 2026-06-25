@@ -48,6 +48,7 @@
             background: white;
             box-shadow: 0 5px 15px rgba(255,255,255,0.2);
         }
+
     </style>
 </head>
 <body>
@@ -84,7 +85,6 @@
     <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">CALENDARIO GARE</h2>
     <p style="font-size: 1.2rem; color: #888; margin-bottom: 30px;">Torneo Conti Young - Stagione 2025/2026</p>
 
-    <!-- 1A GIORNATA -->
     <div style="background: #111; border: 1px solid #222; border-radius: 20px; padding: 20px; margin-bottom: 40px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">
         <h3 style="color: #d4af37; font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Girone M - 1a Giornata</h3>
         
@@ -119,12 +119,11 @@
         </div>
     </div>
 
-    <!-- 2A GIORNATA -->
     <div style="background: #111; border: 1px solid #222; border-radius: 20px; padding: 20px; margin-bottom: 40px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">
         <h3 style="color: #d4af37; font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Girone M - 2a Giornata</h3>
         
         <div class="media-single-container" style="margin-top: 10px; margin-bottom: 20px;">
-            <img src="risvsCostaa.JPG" alt="Germania vs Costa d'Avorio" class="match-poster">
+            <img src="risvsCostaa.jpg" alt="Germania vs Costa d'Avorio" class="match-poster">
         </div>
 
         <div class="media-single-container" style="margin-top: 10px; margin-bottom: 10px; max-width: 550px;">
@@ -154,18 +153,59 @@
         </div>
     </div>
 
-    <div class="back-btn-container">
-        <a href="index.html" class="btn">← Torna alla Home</a>
+    <div style="background: #111; border: 1px solid #222; border-radius: 20px; padding: 20px; margin-bottom: 40px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">
+        <h3 style="color: #d4af37; font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Girone M - 3a Giornata</h3>
+        
+        <div class="media-single-container" style="margin-top: 10px; margin-bottom: 20px;">
+            <img src="vsArgentina.JPG" alt="Germania vs Argentina" class="match-poster">
+        </div>
+
+        <div class="media-single-container" style="margin-top: 10px; margin-bottom: 10px; max-width: 550px;">
+            <button class="conf-btn" onclick="toggleConferenza('conferenza-argentina', 'icon-argentina', this)" style="width: 100%; background: #151515; color: #d4af37; border: 2px solid #d4af37; padding: 15px 20px; font-size: 1.1rem; font-weight: 700; border-radius: 15px; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px;">
+                <i class="fas fa-microphone"></i> Conferenza Stampa Post-Gara <i id="icon-argentina" class="fas fa-chevron-down" style="transition: 0.3s;"></i>
+            </button>
+
+            <div id="conferenza-argentina" style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #090909; border-radius: 0 0 15px 15px; margin-top: -5px; border: 2px solid transparent; border-top: none;">
+                <div style="padding: 25px 20px; text-align: center;">
+                    
+                    <img src="confsta.JPG" alt="Conferenza Stampa Germania Argentina" style="max-width: 100%; width: 100%; border: 2px solid #d4af37; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.6); margin-bottom: 25px;">
+                    
+                    <div style="color: #ffffff; text-align: left; line-height: 1.7; font-size: 1.05rem; font-family: 'Montserrat', sans-serif;">
+                        <p style="margin-bottom: 15px;">Una vera e propria montagna russa di emozioni nella sfida infuocata tra Germania e Argentina, terminata con uno spettacolare 8-5 a favore dei tedeschi.</p>
+                        
+                        <p style="margin-bottom: 15px;">La gara si era aperta sotto i migliori auspici grazie a una straordinaria partenza sprint della Germania, capace di portarsi subito in netto vantaggio. Un improvviso calo di concentrazione ha però permesso all'Argentina di rientrare clamorosamente in partita e agguantare il pareggio. Da quel momento è iniziato un serrato ed emozionante botta e risposta: i tedeschi hanno continuato a portarsi avanti nel punteggio e gli avversari a rincorrere a brevissima distanza, fino all'allungo decisivo arrivato nei minuti finali.</p>
+                        
+                        <blockquote style="border-left: 3px solid #d4af37; padding-left: 15px; margin: 20px 0; font-style: italic; color: #e0e0e0; font-size: 1.1rem;">
+                            «Siamo partiti fortissimo prendendo il largo, ma poi abbiamo staccato la spina e ci siamo fatti recuperare. È stata una gara di grande carattere; ogni volta che si rifacevano sotto abbiamo risposto colpo su colpo da grande squadra, fino a chiuderla definitivamente nel finale. Dobbiamo assolutamente evitare questi cali di tensione, ma oggi festeggiamo una qualificazione storica», l'analisi dello staff nel post-partita.
+                        </blockquote>
+                        
+                        <p style="font-weight: 600; color: #d4af37; margin-top: 15px;">Con questo successo, la Germania Conti Young centra ufficialmente la qualificazione diretta al Mondiale, chiudendo il girone a punteggio pieno con uno storico e memorabile cammino di 3 vittorie su 3 partite.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+
+<div style="text-align:center; margin:40px 0;">
+    <a href="index.html" class="back-btn">← Torna alla Home</a>
+</div>
 </div>
 
 <footer id="contatti">
     <div class="footer-social">
-        <a href="https://www.instagram.com/germania_torneicontiyoung?utm_source=qr" target="_blank" class="instagram"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="https://www.tiktok.com/@germania_torneiconti2k26?_r=1&_t=ZN-96xFqH0A2fG" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+        <a href="https://www.instagram.com/germania_torneicontiyoung?utm_source=qr" target="_blank" class="instagram">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+
+        <a href="https://www.tiktok.com/@germania_torneiconti2k26?_r=1&_t=ZN-96xFqH0A2fG" target="_blank" class="tiktok">
+            <i class="fab fa-tiktok"></i> TikTok
+        </a>
     </div>
-    <p style="text-align: center; margin-top: 20px;">© 2025 - 2026 Germania Conti Young</p>
-    <p style="text-align: center; color: #aaa;">Roma - Torneo Conti Young</p>
+
+    <p style="margin-top:20px;">© 2025 - 2026 Germania Conti Young</p>
+    <p>Roma - Torneo Conti Young</p>
 </footer>
 
 <script src="script.js"></script>
