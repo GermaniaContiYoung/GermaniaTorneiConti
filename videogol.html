@@ -202,7 +202,7 @@
 
             <div style="margin-top: 20px; border-top: 1px solid #222; padding-top: 20px;">
                 <h4 style="color: #d4af37; font-weight: 700;">Girone M - Giornata 3</h4>
-                <img src="vsArgentina.JPG" alt="Risultato Finale vs Argentina" class="match-result-poster" onclick="mostraMarcatori('argentina')">
+                <img src="vsArgentina.jpg" alt="Risultato Finale vs Argentina" class="match-result-poster" onclick="mostraMarcatori('argentina')">
             </div>
         </div>
 
@@ -297,7 +297,7 @@
                     <p>3 Gol <i class="fas fa-chevron-right" style="font-size: 0.9rem;"></i></p>
                 </div>
 
-                <div class="stat-card" onclick="avviaVideo('murariu1arg', 'Cristian Murariu', 'arg')">
+                <div class="stat-card" onclick="avviaVideo('murariu1arg', 'Cristian Murariu', 'argentina')">
                     <h4>Cristian Murariu</h4>
                     <p>1 Gol <i class="fas fa-play-circle"></i></p>
                 </div>
@@ -380,6 +380,8 @@
     }
 
     function tornaAlPoster() {
+        giocatoreSelezionatoCorrente = '';
+        nomeGiocatoreCorrente = '';
         document.getElementById('step-markers-marocco').style.display = 'none';
         document.getElementById('step-markers-costa').style.display = 'none';
         document.getElementById('step-markers-argentina').style.display = 'none';
@@ -414,7 +416,6 @@
                 </div>
             `;
         } else {
-            // Genera automaticamente i bottoni per 3 o 4 gol (Argentina)
             for (let i = 1; i <= numeroGol; i++) {
                 let fileGol = prefissoFile + i + suffissoPartita;
                 grid.innerHTML += `
@@ -430,6 +431,12 @@
     }
 
     function tornaAiMarcatori() {
+        const player = document.getElementById('main-video-player');
+        player.pause();
+        
+        giocatoreSelezionatoCorrente = '';
+        nomeGiocatoreCorrente = '';
+        
         document.getElementById('step-sub-selection').style.display = 'none';
         document.getElementById('step-video').style.display = 'none';
         
@@ -443,80 +450,6 @@
             document.getElementById('step-markers-argentina').style.display = 'block';
             document.getElementById('main-title').innerText = "Gol vs Argentina";
         }
-    }
-
-        function avviaVideo(nomeCompletoFile, titoloSchermata, provenienza) {
-        const player = document.getElementById('main-video-player');
-        const source = document.getElementById('video-source');
-        
-        // Reset del controllo errori per evitare loop infiniti
-        player.onerror = null;
-
-        // TENTATIVO 1: Forza tutto in minuscolo (.mp4)
-        source.src = nomeCompletoFile.toLowerCase() + ".mp4";
-        
-        // SE IL PRIMO TENTATIVO FALLISCE (Errore 404), scatta il blocco "Catch" automatico
-        player.onerror = function() {
-            // Se abbiamo già provato il tutto MAIUSCOLO e fallisce anche quello, ci fermiamo
-            if (source.src.includes(nomeCompletoFile.toUpperCase() + ".MP4")) {
-                console.error("Il file video non esiste sul server in nessun formato.");
-                return;
-            }
-
-            // TENTATIVO 2: Prova con il nome minuscolo ma l'estensione MAIUSCOLA (.MP4)
-            if (!source.src.endsWith(".MP4")) {
-                console.log("File .mp4 minuscolo non trovato, provo l'estensione .MP4 maiuscola...");
-                source.src = nomeCompletoFile.toLowerCase() + ".MP4";
-                player.load();
-                player.play();
-            } 
-            // TENTATIVO 3: Prova con TUTTO IN MAIUSCOLO (es. GIOVA1ARG.MP4)
-            else {
-                console.log("Estensione .MP4 fallita, provo con il nome TUTTO MAIUSCOLO...");
-                source.src = nomeCompletoFile.toUpperCase() + ".MP4";
-                player.load();
-                player.play();
-            }
-        };
-        
-        // Avvia il caricamento iniziale del primo tentativo
-        player.load();
-        player.play();
-        
-        // Gestione grafica dei menu (Invariata, ottimizzata per l'Argentina)
-        document.getElementById('main-title').innerText = titoloSchermata;
-        
-        document.getElementById('step-markers-marocco').style.display = 'none';
-        document.getElementById('step-markers-costa').style.display = 'none';
-        document.getElementById('step-markers-argentina').style.display = 'none';
-        
-        if (provenienza === 'marocco' || provenienza === 'costa' || provenienza === 'argentina') {
-            document.getElementById('video-back-btn').setAttribute('onclick', 'tornaAiMarcatori()');
-        } else {
-            document.getElementById('step-sub-selection').style.display = 'none';
-            document.getElementById('video-back-btn').setAttribute('onclick', 'tornaAlSottomenu()');
-        }
-        
-        document.getElementById('step-video').style.display = 'block';
-    }
-
-        
-        player.load();
-        player.play();
-        
-        document.getElementById('main-title').innerText = titoloSchermata;
-        
-        if (provenienza === 'marocco' || provenienza === 'costa' || provenienza === 'argentina') {
-            document.getElementById('step-markers-marocco').style.display = 'none';
-            document.getElementById('step-markers-costa').style.display = 'none';
-            document.getElementById('step-markers-argentina').style.display = 'none';
-            document.getElementById('video-back-btn').setAttribute('onclick', 'tornaAiMarcatori()');
-        } else {
-            document.getElementById('step-sub-selection').style.display = 'none';
-            document.getElementById('video-back-btn').setAttribute('onclick', 'tornaAlSottomenu()');
-        }
-        
-        document.getElementById('step-video').style.display = 'block';
     }
 
     function tornaAlSottomenu() {
