@@ -445,17 +445,61 @@
         }
     }
 
-    function avviaVideo(nomeCompletoFile, titoloSchermata, provenienza) {
+        function avviaVideo(nomeCompletoFile, titoloSchermata, provenienza) {
         const player = document.getElementById('main-video-player');
         const source = document.getElementById('video-source');
         
-        // Se il file termina con "cot", usa l'estensione maiuscola .MP4
-        if (nomeCompletoFile.endsWith('cot')) {
-            source.src = nomeCompletoFile + ".MP4";
+        // Reset del controllo errori per evitare loop infiniti
+        player.onerror = null;
+
+        // TENTATIVO 1: Forza tutto in minuscolo (.mp4)
+        source.src = nomeCompletoFile.toLowerCase() + ".mp4";
+        
+        // SE IL PRIMO TENTATIVO FALLISCE (Errore 404), scatta il blocco "Catch" automatico
+        player.onerror = function() {
+            // Se abbiamo già provato il tutto MAIUSCOLO e fallisce anche quello, ci fermiamo
+            if (source.src.includes(nomeCompletoFile.toUpperCase() + ".MP4")) {
+                console.error("Il file video non esiste sul server in nessun formato.");
+                return;
+            }
+
+            // TENTATIVO 2: Prova con il nome minuscolo ma l'estensione MAIUSCOLA (.MP4)
+            if (!source.src.endsWith(".MP4")) {
+                console.log("File .mp4 minuscolo non trovato, provo l'estensione .MP4 maiuscola...");
+                source.src = nomeCompletoFile.toLowerCase() + ".MP4";
+                player.load();
+                player.play();
+            } 
+            // TENTATIVO 3: Prova con TUTTO IN MAIUSCOLO (es. GIOVA1ARG.MP4)
+            else {
+                console.log("Estensione .MP4 fallita, provo con il nome TUTTO MAIUSCOLO...");
+                source.src = nomeCompletoFile.toUpperCase() + ".MP4";
+                player.load();
+                player.play();
+            }
+        };
+        
+        // Avvia il caricamento iniziale del primo tentativo
+        player.load();
+        player.play();
+        
+        // Gestione grafica dei menu (Invariata, ottimizzata per l'Argentina)
+        document.getElementById('main-title').innerText = titoloSchermata;
+        
+        document.getElementById('step-markers-marocco').style.display = 'none';
+        document.getElementById('step-markers-costa').style.display = 'none';
+        document.getElementById('step-markers-argentina').style.display = 'none';
+        
+        if (provenienza === 'marocco' || provenienza === 'costa' || provenienza === 'argentina') {
+            document.getElementById('video-back-btn').setAttribute('onclick', 'tornaAiMarcatori()');
         } else {
-            // Tutti gli altri inclusi i file dell'Argentina (.mp4 minuscolo)
-            source.src = nomeCompletoFile + ".mp4";
+            document.getElementById('step-sub-selection').style.display = 'none';
+            document.getElementById('video-back-btn').setAttribute('onclick', 'tornaAlSottomenu()');
         }
+        
+        document.getElementById('step-video').style.display = 'block';
+    }
+
         
         player.load();
         player.play();
