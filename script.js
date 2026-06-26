@@ -1,29 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // FUNZIONE APERTURA TENDINA VIDEO
-    const videoDropdown = document.getElementById('videoDropdown');
-    if (videoDropdown) {
-        const dropbtn = videoDropdown.querySelector('.dropbtn');
-        
-        dropbtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            videoDropdown.classList.toggle('open');
-        });
-
-        const links = videoDropdown.querySelectorAll('.dropdown-link');
-        links.forEach(link => {
-            link.addEventListener('click', function() {
-                videoDropdown.classList.remove('open');
-            });
-        });
-    }
-
-    // CHIUSURA SE SI CLICCA FUORI DA OGNI ELEMENTO
-    document.addEventListener('click', function() {
-        if (videoDropdown) videoDropdown.classList.remove('open');
-    });
-});
-
-// FUNZIONE GLOBALE PER AVVIARE I VIDEO (Gestione dinamica maiuscole/minuscole ed estensioni)
+// FUNZIONE GLOBALE PER AVVIARE I VIDEO (Ottimizzata per giova1arg.MP4, giova3arg.MP4 e murariu1arg.MP4)
 function avviaVideo(nomeCompletoFile, titoloSchermata, provenienza) {
     const player = document.getElementById('main-video-player');
     const source = document.getElementById('video-source');
@@ -31,34 +6,30 @@ function avviaVideo(nomeCompletoFile, titoloSchermata, provenienza) {
     // Resetta eventuali vecchi controlli di errore per evitare loop continui
     player.onerror = null;
 
-    // TENTATIVO 1: Prova a caricare il formato standard tutto minuscolo (.mp4)
-    source.src = nomeCompletoFile.toLowerCase() + ".mp4";
+    // Ordiniamo i tentativi mettendo per PRIMO il formato con estensione maiuscola (.MP4),
+    // che è quello usato dall'Argentina (giova1arg.MP4) e dalla Costa d'Avorio (giovannetti1cot.MP4)
+    const tentativi = [
+        nomeCompletoFile.toLowerCase() + ".MP4", // 1. Nome minuscolo, estensione MAIUSCOLA (es. giova1arg.MP4)
+        nomeCompletoFile.toLowerCase() + ".mp4", // 2. Tutto minuscolo (es. giova2arg.mp4)
+    ];
     
-    // SE DA ERRORE 404 (Perché il file su GitHub ha lettere o estensioni maiuscole), scatta la correzione:
-    player.onerror = function() {
-        // Se abbiamo già provato il formato tutto maiuscolo (.MP4) e fallisce, ci fermiamo per evitare loop
-        if (source.src.includes(nomeCompletoFile.toUpperCase() + ".MP4")) {
-            console.error("Il file video non esiste sul server in nessun formato.");
-            return;
-        }
+    let indiceTentativo = 0;
 
-        // TENTATIVO 2: Mantieni il nome minuscolo ma prova l'estensione .MP4 maiuscola (Utile per i file 'cot')
-        if (!source.src.endsWith(".MP4")) {
-            console.log("File .mp4 non trovato, provo l'estensione .MP4 maiuscola...");
-            source.src = nomeCompletoFile.toLowerCase() + ".MP4";
+    // Se il tentativo corrente fallisce, passa automaticamente al successivo
+    player.onerror = function() {
+        indiceTentativo++;
+        if (indiceTentativo < tentativi.length) {
+            console.log("Video non trovato, provo il formato alternativo: " + tentativi[indiceTentativo]);
+            source.src = tentativi[indiceTentativo];
             player.load();
             player.play();
-        } 
-        // TENTATIVO 3: Prova a trasformare l'intero file in MAIUSCOLO (Utile per i file dell'Argentina scritti in grande)
-        else {
-            console.log("Estensione fallita, provo a forzare l'intero nome in MAIUSCOLO...");
-            source.src = nomeCompletoFile.toUpperCase() + ".MP4";
-            player.load();
-            player.play();
+        } else {
+            console.error("Il file video non esiste sul server in nessun formato possibile.");
         }
     };
     
-    // Caricamento del primo tentativo
+    // Avvia subito il primo tentativo (nome minuscolo + .MP4)
+    source.src = tentativi[indiceTentativo];
     player.load();
     player.play();
     
