@@ -28,6 +28,7 @@
             border: 2px solid #d4af37;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            transition: fade 0.3s ease-in-out;
         }
         .back-btn-container {
             margin-top: 40px;
@@ -48,7 +49,45 @@
             background: white;
             box-shadow: 0 5px 15px rgba(255,255,255,0.2);
         }
-
+        
+        /* STILI PER I BOTTONI DI SELEZIONE TURNI ELIMINAZIONE DIRETTA */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 550px;
+        }
+        .tab-btn {
+            flex: 1;
+            background: #151515;
+            color: #aaa;
+            border: 1px solid #333;
+            padding: 10px 5px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .tab-btn:hover {
+            border-color: #d4af37;
+            color: #fff;
+        }
+        .tab-btn.active {
+            background: #d4af37;
+            color: black;
+            border-color: #d4af37;
+        }
+        .greek-text-block {
+            display: none;
+        }
+        .greek-text-block.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -83,7 +122,7 @@
 
 <div class="cal-container">
     <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">CALENDARIO GARE</h2>
-    <p style="font-size: 1.2rem; color: #888; margin-bottom: 30px;">Torneo Conti Young - Stagione 2025/2026</p>
+    <p style="font-size: 1.2rem; color: #888; margin-bottom: 30px;">Torneo Conti Young - Fasi Finali</p>
 
     <div style="background: #111; border: 1px solid #222; border-radius: 20px; padding: 20px; margin-bottom: 40px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">
         <h3 style="color: #d4af37; font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Girone M - 1a Giornata</h3>
@@ -99,21 +138,15 @@
 
             <div id="conferenza-marocco" style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #090909; border-radius: 0 0 15px 15px; margin-top: -5px; border: 2px solid transparent; border-top: none;">
                 <div style="padding: 25px 20px; text-align: center;">
-                    
                     <img src="confsta.JPG" alt="Conferenza Stampa Marocco" style="max-width: 100%; width: 100%; border: 2px solid #d4af37; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.6); margin-bottom: 25px;">
-                    
                     <div style="color: #ffffff; text-align: left; line-height: 1.7; font-size: 1.05rem; font-family: 'Montserrat', sans-serif;">
-                        <p style="margin-bottom: 15px;">Al termine della gara contro il Marocco, conclusa sul 6-2, Mr Führer e Mr Mourinho hanno espresso soddisfazione per il risultato ma non per la prestazione.</p>
-                        
+                        <p style="margin-bottom: 15px;">Al termine della gara contro il Marocco, conclusa sul 6-2, Mr Führer e Mr Mourinho hanno espresso soddisfazione for il risultato ma non per la prestazione.</p>
                         <p style="margin-bottom: 15px;">I due tecnici hanno sottolineato come la squadra sia andata sotto nel punteggio, abbia reagito fino al 2-1, per poi concedere nuovamente il pareggio e mantenere la partita aperta fino a dieci minuti dalla fine.</p>
-                        
                         <blockquote style="border-left: 3px solid #d4af37; padding-left: 15px; margin: 20px 0; font-style: italic; color: #e0e0e0; font-size: 1.1rem;">
-                            «Il risultato è ampio, ma abbiamo sofferto troppo. La reazione è stata positiva, ma dobbiamo imparare a gestire meglio i moments della partita», il messaggio condiviso dai coach in conferenza stampa.
+                            «Il risultato è ampio, ma abbiamo sofferto troppo. La reazione è stata positiva, ma dobbiamo imparare a gestire meglio i momenti della partita», il messaggio condiviso dai coach in conferenza stampa.
                         </blockquote>
-                        
                         <p style="font-weight: 600; color: #d4af37; margin-top: 15px;">Tre punti importanti per la Germania, con la consapevolezza che ci sarà ancora molto da migliorare.</p>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -123,7 +156,7 @@
         <h3 style="color: #d4af37; font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Girone M - 2a Giornata</h3>
         
         <div class="media-single-container" style="margin-top: 10px; margin-bottom: 20px;">
-            <img src="risvsCostaa.JPG" alt="Germania vs Costa d'Avorio" class="match-poster">
+            <img src="risvsCostaa.jpg" alt="Germania vs Costa d'Avorio" class="match-poster">
         </div>
 
         <div class="media-single-container" style="margin-top: 10px; margin-bottom: 10px; max-width: 550px;">
@@ -133,21 +166,15 @@
 
             <div id="conferenza-costa" style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #090909; border-radius: 0 0 15px 15px; margin-top: -5px; border: 2px solid transparent; border-top: none;">
                 <div style="padding: 25px 20px; text-align: center;">
-                    
                     <img src="confsta.JPG" alt="Conferenza Stampa Costa d'Avorio" style="max-width: 100%; width: 100%; border: 2px solid #d4af37; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.6); margin-bottom: 25px;">
-                    
                     <div style="color: #ffffff; text-align: left; line-height: 1.7; font-size: 1.05rem; font-family: 'Montserrat', sans-serif;">
                         <p style="margin-bottom: 15px;">Al termine della straordinaria vittoria per 9-2 contro la Costa d'Avorio, la guida tecnica ha espresso enorme soddisfazione per il gioco espresso e la cattiveria sotto porta.</p>
-                        
                         <p style="margin-bottom: 15px;">Una prestazione dominante dall'inizio alla fine che lancia un segnale chiaro a tutto il torneo: la Germania Conti Young è in uno stato di forma eccellente e gioca per lasciare il segno.</p>
-                        
                         <blockquote style="border-left: 3px solid #d4af37; padding-left: 15px; margin: 20px 0; font-style: italic; color: #e0e0e0; font-size: 1.1rem;">
                             «Siamo entrati in campo determinati e concentrati. Il risultato rispecchia i nostri sforzi in allenamento, ma continuiamo a lavorare a testa bassa», le parole a caldo del post-gara.
                         </blockquote>
-                        
                         <p style="font-weight: 600; color: #d4af37; margin-top: 15px;">Altri tre punti fondamentali che blindano la testa del girone a punteggio pieno.</p>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -167,45 +194,91 @@
 
             <div id="conferenza-argentina" style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #090909; border-radius: 0 0 15px 15px; margin-top: -5px; border: 2px solid transparent; border-top: none;">
                 <div style="padding: 25px 20px; text-align: center;">
-                    
                     <img src="confsta.JPG" alt="Conferenza Stampa Germania Argentina" style="max-width: 100%; width: 100%; border: 2px solid #d4af37; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.6); margin-bottom: 25px;">
-                    
                     <div style="color: #ffffff; text-align: left; line-height: 1.7; font-size: 1.05rem; font-family: 'Montserrat', sans-serif;">
                         <p style="margin-bottom: 15px;">Una vera e propria montagna russa di emozioni nella sfida infuocata tra Germania e Argentina, terminata con uno spettacolare 8-5 a favore dei tedeschi.</p>
-                        
                         <p style="margin-bottom: 15px;">La gara si era aperta sotto i migliori auspici grazie a una straordinaria partenza sprint della Germania, capace di portarsi subito in netto vantaggio. Un improvviso calo di concentrazione ha però permesso all'Argentina di rientrare clamorosamente in partita e agguantare il pareggio. Da quel momento è iniziato un serrato ed emozionante botta e risposta: i tedeschi hanno continuato a portarsi avanti nel punteggio e gli avversari a rincorrere a brevissima distanza, fino all'allungo decisivo arrivato nei minuti finali.</p>
-                        
                         <blockquote style="border-left: 3px solid #d4af37; padding-left: 15px; margin: 20px 0; font-style: italic; color: #e0e0e0; font-size: 1.1rem;">
                             «Siamo partiti fortissimo prendendo il largo, ma poi abbiamo staccato la spina e ci siamo fatti recuperare. È stata una gara di grande carattere; ogni volta che si rifacevano sotto abbiamo risposto colpo su colpo da grande squadra, fino a chiuderla definitivamente nel finale. Dobbiamo assolutamente evitare questi cali di tensione, ma oggi festeggiamo una qualificazione storica», l'analisi dello staff nel post-partita.
                         </blockquote>
-                        
                         <p style="font-weight: 600; color: #d4af37; margin-top: 15px;">Con questo successo, la Germania Conti Young centra ufficialmente la qualificazione diretta al Mondiale, chiudendo il girone a punteggio pieno con uno storico e memorabile cammino di 3 vittorie su 3 partite.</p>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div style="text-align:center; margin:40px 0;">
-    <a href="index.html" class="back-btn">← Torna alla Home</a>
-</div>
+    <div style="background: #111; border: 1px solid #222; border-radius: 20px; padding: 20px; margin-bottom: 40px; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">
+        <h3 style="color: #d4af37; font-size: 1.4rem; font-weight: 700; margin-bottom: 5px; text-transform: uppercase;">Fase ad Eliminazione Diretta</h3>
+        
+        <div class="tabs-container">
+            <button class="tab-btn" onclick="cambiaTurnoGrecia('andata', 'vsGreekAndata.jpg', this)">Gara di Andata</button>
+            <button class="tab-btn active" onclick="cambiaTurnoGrecia('complessivo', 'vsGreek.jpg', this)">Risultato Complessivo</button>
+            <button class="tab-btn" onclick="cambiaTurnoGrecia('ritorno', 'vsGreekRitorno.jpg', this)">Gara di Ritorno</button>
+        </div>
+
+        <div class="media-single-container" style="margin-top: 10px; margin-bottom: 20px;">
+            <img id="posterGrecia" src="vsGreek.jpg" alt="Germania vs Grecia" class="match-poster">
+        </div>
+
+        <div class="media-single-container" style="margin-top: 10px; margin-bottom: 10px; max-width: 550px;">
+            <button class="conf-btn" onclick="toggleConferenza('conferenza-grecia', 'icon-grecia', this)" style="width: 100%; background: #151515; color: #d4af37; border: 2px solid #d4af37; padding: 15px 20px; font-size: 1.1rem; font-weight: 700; border-radius: 15px; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px;">
+                <i class="fas fa-microphone"></i> <span id="titoloBottoneConf">Conferenza Stampa Generale</span> <i id="icon-grecia" class="fas fa-chevron-down" style="transition: 0.3s;"></i>
+            </button>
+
+            <div id="conferenza-grecia" style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #090909; border-radius: 0 0 15px 15px; margin-top: -5px; border: 2px solid transparent; border-top: none;">
+                <div style="padding: 25px 20px; text-align: center;">
+                    
+                    <img src="confsta.JPG" alt="Conferenza Stampa Germania Grecia" style="max-width: 100%; width: 100%; border: 2px solid #d4af37; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.6); margin-bottom: 25px;">
+                    
+                    <div style="color: #ffffff; text-align: left; line-height: 1.7; font-size: 1.05rem; font-family: 'Montserrat', sans-serif;">
+                        
+                        <div id="text-complessivo" class="greek-text-block active">
+                            <p style="margin-bottom: 15px;">“Si chiude qui il nostro cammino negli ottavi di finale. L’andata era terminata <strong>4-4</strong>, lasciando tutto aperto e regalandoci la possibilità di giocarci la qualificazione nel ritorno. Purtroppo questa sera la Grecia si è imposta <strong>5-4</strong>, conquistando il passaggio del turno con il risultato complessivo di <strong>9-8</strong>.</p>
+                            <p style="margin-bottom: 15px;">L’eliminazione fa male, perché sappiamo quanto lavoro, passione e sacrificio ci siano stati dietro questa squadra. Tuttavia, non vogliamo che questa doppia sfida venga ricordata soltanto per il risultato finale. Vogliamo che venga ricordata per il carattere mostrato dai nostri ragazzi.</p>
+                            <p style="margin-bottom: 15px;">Essere sotto <strong>5-0</strong> e riuscire a riaprire completamente la partita fino al <strong>5-4</strong> dimostra la forza mentale di questo gruppo. Non tutti avrebbero avuto il coraggio di continuare a crederci. I nostri ragazzi lo hanno fatto, lottando fino all’ultimo pallone.</p>
+                            <p style="margin-bottom: 15px;">Facciamo i complimenti alla Grecia, che ha meritato il passaggio del turno, e auguriamo loro il meglio per il prosieguo della competizione.</p>
+                            <blockquote style="border-left: 3px solid #d4af37; padding-left: 15px; margin: 20px 0; font-style: italic; color: #e0e0e0; font-size: 1.1rem;">
+                                «Per quanto ci riguarda, questa eliminazione non rappresenta un punto di arrivo, ma un punto di partenza. Torneremo in campo con ancora più esperienza, più fame e più determinazione. La Germania Conti Young esce dagli ottavi di finale, ma esce a testa alta. Questo gruppo ha dimostrato di avere valori che vanno ben oltre il risultato di una partita, e siamo certi che il futuro ci riserverà nuove occasioni per dimostrare chi siamo davvero.»
+                            </blockquote>
+                        </div>
+
+                        <div id="text-andata" class="greek-text-block">
+                            <p style="margin-bottom: 15px;">Un pareggio che lascia l’amaro in bocca. Eravamo avanti, poi ci siamo complicati la partita da soli. Sul piano tecnico abbiamo dimostrato di poter fare la differenza, ma disorganizzazione, poca intensità e troppi errori ci hanno portato fino al 2-4.</p>
+                            <p style="margin-bottom: 15px;">Negli ultimi minuti la reazione d’orgoglio, con la doppietta di Lo Turco, ci permette di riprendere una gara che non doveva sfuggirci.</p>
+                            <blockquote style="border-left: 3px solid #d4af37; padding-left: 15px; margin: 20px 0; font-style: italic; color: #e0e0e0; font-size: 1.1rem;">
+                                «Ora serve una sola cosa: trasformare questa lezione in una prestazione diversa al ritorno. Gli ottavi sono ancora aperti.»
+                            </blockquote>
+                        </div>
+
+                        <div id="text-ritorno" class="greek-text-block">5
+                            <p style="margin-bottom: 15px;">“È una sconfitta che lascia tanta amarezza, ma anche tantissimo orgoglio. Nei primi minuti siamo entrati in campo con poca intensità e la Grecia ne ha approfittato, portandosi addirittura sul <strong>5-0</strong>. In quel momento sembrava una partita ormai chiusa.</p>
+                            <p style="margin-bottom: 15px;">Durante il time-out ci siamo guardati negli occhi e abbiamo chiesto ai ragazzi di tirare fuori il carattere. Non abbiamo parlato di schemi o tattica, ma di orgoglio, di sacrificio e del valore di questa maglia.</p>
+                            <p style="margin-bottom: 15px;">Da quel momento la squadra ha avuto una reazione straordinaria. Abbiamo segnato quattro gol, abbiamo rimesso in discussione una partita che sembrava impossibile e abbiamo costretto la Grecia a soffrire fino all’ultimo secondo. È mancato un solo gol per completare una rimonta che sarebbe rimasta nella storia.</p>
+                            <p style="margin-bottom: 15px;">Naturalmente siamo delusi per il risultato, perché nessuno scende in campo per perdere. Ma questa squadra ha dimostrato di non mollare mai, anche quando tutto sembrava perduto. È questo lo spirito che vogliamo portare avanti.</p>
+                            <blockquote style="border-left: 3px solid #d4af37; padding-left: 15px; margin: 20px 0; font-style: italic; color: #e0e0e0; font-size: 1.1rem;">
+                                «Facciamo i complimenti alla Grecia per la qualificazione e ringraziamo tutti i nostri tifosi che ci hanno sostenuto fino alla fine. Oggi usciamo sconfitti, ma con la consapevolezza di aver dato tutto negli ultimi minuti.»
+                            </blockquote>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-btn-container">
+        <a href="index.html" class="btn">← Torna alla Home</a>
+    </div>
 </div>
 
 <footer id="contatti">
     <div class="footer-social">
-        <a href="https://www.instagram.com/germania_torneicontiyoung?utm_source=qr" target="_blank" class="instagram">
-            <i class="fab fa-instagram"></i> Instagram
-        </a>
-
-        <a href="https://www.tiktok.com/@germania_torneiconti2k26?_r=1&_t=ZN-96xFqH0A2fG" target="_blank" class="tiktok">
-            <i class="fab fa-tiktok"></i> TikTok
-        </a>
+        <a href="https://www.instagram.com/germania_torneicontiyoung?utm_source=qr" target="_blank" class="instagram"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://www.tiktok.com/@germania_torneiconti2k26?_r=1&_t=ZN-96xFqH0A2fG" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
     </div>
-
-    <p style="margin-top:20px;">© 2025 - 2026 Germania Conti Young</p>
-    <p>Roma - Torneo Conti Young</p>
+    <p style="text-align: center; margin-top: 20px;">© 2025 - 2026 Germania Conti Young</p>
+    <p style="text-align: center; color: #aaa;">Roma - Torneo Conti Young</p>
 </footer>
 
 <script src="script.js"></script>
@@ -227,6 +300,34 @@
                 btn.style.borderRadius = "15px";
             }, 300);
             icon.style.transform = "rotate(0deg)";
+        }
+    }
+
+    // NUOVA LOGICA LOGICA TABS GRECI (ANDATA / COMPLESSIVO / RITORNO)
+    function cambiaTurnoGrecia(tipo, immagineSorgente, bottoneCliccato) {
+        // 1. Aggiorna lo stato visivo dei bottoni
+        const tuttiIBottoni = document.querySelectorAll('.tab-btn');
+        tuttiIBottoni.forEach(b => b.classList.remove('active'));
+        bottoneCliccato.classList.add('active');
+
+        // 2. Cambia l'immagine del poster principale
+        document.getElementById('posterGrecia').src = immagineSorgente;
+
+        // 3. Cambia il titolo dell'accordion a seconda del caso
+        const titoloLabel = document.getElementById('titoloBottoneConf');
+        if(tipo === 'andata') titoloLabel.innerText = "Conferenza Post-Gara Andata";
+        else if(tipo === 'ritorno') titoloLabel.innerText = "Conferenza Post-Gara Ritorno";
+        else titoloLabel.innerText = "Conferenza Stampa Generale";
+
+        // 4. Cambia il blocco di testo attivo all'interno dell'accordion
+        const tuttiITesti = document.querySelectorAll('.greek-text-block');
+        tuttiITesti.forEach(t => t.classList.remove('active'));
+        document.getElementById('text-' + tipo).classList.add('active');
+
+        // 5. Se la tendina è già aperta, ricalcola al volo l'altezza per evitare tagli o spazi vuoti
+        const content = document.getElementById('conferenza-grecia');
+        if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+            content.style.maxHeight = content.scrollHeight + "px";
         }
     }
 </script>

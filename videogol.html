@@ -78,6 +78,22 @@
             width: 100%;
         }
 
+        /* Forza l'ultimo elemento dispari (Di Giacomo) al centro nella Grecia Andata */
+        .grid-grecia-andata .stat-card:last-child {
+            grid-column: span 2;
+            max-width: calc(50% - 10px);
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Forza l'ultimo elemento dispari (Autogoal) al centro nella Grecia Ritorno */
+        .grid-grecia-ritorno .stat-card:last-child {
+            grid-column: span 2;
+            max-width: calc(50% - 10px);
+            margin: 0 auto;
+            width: 100%;
+        }
+
         /* Forza il 3° gol al centro nel sottomenu se gli elementi totali sono 3 (Es. Lo Turco) */
         .grid-3items .stat-card:last-child {
             grid-column: span 2;
@@ -208,12 +224,33 @@
                 <img src="risvsCostaa.JPG" alt="Risultato Finale vs Costa d'Avorio" class="match-result-poster" onclick="mostraMarcatori('costa')">
             </div>
 
-            <div style="margin-top: 20px; border-top: 1px solid #222; padding-top: 20px;">
+            <div style="margin-bottom: 40px; border-top: 1px solid #222; padding-top: 20px;">
                 <h4 style="color: #d4af37; font-weight: 700;">GARA 3: VS ARGENTINA</h4>
                 <img src="vsArgentina.JPG" alt="Risultato Finale vs Argentina" class="match-result-poster" onclick="mostraMarcatori('argentina')">
             </div>
+
+            <div style="margin-top: 20px; border-top: 1px solid #222; padding-top: 20px;">
+                <h4 style="color: #d4af37; font-weight: 700;">FASE AD ELIMINAZIONE DIRETTA: VS GRECIA</h4>
+                
+                <div id="grecia-stato-complessivo">
+                    <img src="vsGreek.jpg" alt="Risultato Complessivo vs Grecia" class="match-result-poster" onclick="attivaPulsantiGrecia()">
+                </div>
+
+                <div id="grecia-stato-selection" style="display: none; margin-top: 20px;">
+                    <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
+                        <button class="action-btn" onclick="cambiaPosterGrecia('andata')" style="margin-top: 0; padding: 10px 20px;">Gara di Andata</button>
+                        <button class="action-btn" onclick="cambiaPosterGrecia('ritorno')" style="margin-top: 0; padding: 10px 20px;">Gara di Ritorno</button>
+                    </div>
+
+                    <img id="grecia-img-andata" src="vsGreekAndata.jpg" alt="Gara di Andata vs Grecia" class="match-result-poster" style="display: none;" onclick="mostraMarcatori('grecia-andata')">
+                    <img id="grecia-img-ritorno" src="vsGreekRitorno.jpg" alt="Gara di Ritorno vs Grecia" class="match-result-poster" style="display: none;" onclick="mostraMarcatori('grecia-ritorno')">
+                    
+                    <button class="back-btn" onclick="resetVistaGrecia()" style="margin-top: 25px; padding: 6px 15px; font-size: 0.8rem;">← Mostra Complessivo</button>
+                </div>
+            </div>
         </div>
 
+        <!-- SEZIONE MARCATORI MAROCCO -->
         <div id="step-markers-marocco" class="markers-section">
             <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
                 Seleziona un giocatore per vedere i gol
@@ -244,6 +281,7 @@
             <button class="action-btn" onclick="tornaAlPoster()" style="margin-top: 30px;">← Torna alle Partite</button>
         </div>
 
+        <!-- SEZIONE MARCATORI COSTA D'AVORIO -->
         <div id="step-markers-costa" class="markers-section">
             <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
                 Seleziona un giocatore per vedere i gol
@@ -289,6 +327,7 @@
             <button class="action-btn" onclick="tornaAlPoster()" style="margin-top: 30px;">← Torna alle Partite</button>
         </div>
 
+        <!-- SEZIONE MARCATORI ARGENTINA -->
         <div id="step-markers-argentina" class="markers-section">
             <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
                 Seleziona un giocatore per vedere i gol
@@ -314,6 +353,59 @@
             <button class="action-btn" onclick="tornaAlPoster()" style="margin-top: 30px;">← Torna alle Partite</button>
         </div>
 
+        <!-- SEZIONE MARCATORI GRECIA ANDATA -->
+        <div id="step-markers-grecia-andata" class="markers-section">
+            <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
+                Seleziona un giocatore per vedere i gol
+            </p>
+            
+            <div class="stats-grid grid-grecia-andata">
+                <div class="stat-card" onclick="sceltaGolMultipli('loturco', 'Andrea Lo Turco', false, 2, 'greekandata')">
+                    <h4>Andrea Lo Turco</h4>
+                    <p>2 Gol <i class="fas fa-chevron-right" style="font-size: 0.9rem;"></i></p>
+                </div>
+
+                <div class="stat-card" onclick="avviaVideo('giovannetti1greekandata', 'Emanuele Giovannetti', 'grecia-andata')">
+                    <h4>Emanuele Giovannetti</h4>
+                    <p>1 Gol <i class="fas fa-play-circle"></i></p>
+                </div>
+
+                <div class="stat-card" onclick="avviaVideo('digiacomo1greekandata', 'Valerio Di Giacomo', 'grecia-andata')">
+                    <h4>Valerio Di Giacomo</h4>
+                    <p>1 Gol <i class="fas fa-play-circle"></i></p>
+                </div>
+            </div>
+            
+            <button class="action-btn" onclick="tornaAlPoster()" style="margin-top: 30px;">← Torna alle Partite</button>
+        </div>
+
+        <!-- SEZIONE MARCATORI GRECIA RITORNO -->
+        <div id="step-markers-grecia-ritorno" class="markers-section">
+            <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
+                Seleziona un giocatore per vedere i gol
+            </p>
+            
+            <div class="stats-grid grid-grecia-ritorno">
+                <div class="stat-card" onclick="sceltaGolMultipli('giovannetti', 'Emanuele Giovannetti', false, 2, 'greekritorno')">
+                    <h4>Emanuele Giovannetti</h4>
+                    <p>2 Gol <i class="fas fa-chevron-right" style="font-size: 0.9rem;"></i></p>
+                </div>
+
+                <div class="stat-card" onclick="avviaVideo('franci1greekritorno', 'Cristian Franci', 'grecia-ritorno')">
+                    <h4>Cristian Franci</h4>
+                    <p>1 Gol <i class="fas fa-play-circle"></i></p>
+                </div>
+
+                <div class="stat-card" onclick="avviaVideo('autogoal1greekritorno', 'Autogol', 'grecia-ritorno')">
+                    <h4>Autogol</h4>
+                    <p>1 Gol <i class="fas fa-play-circle"></i></p>
+                </div>
+            </div>
+            
+            <button class="action-btn" onclick="tornaAlPoster()" style="margin-top: 30px;">← Torna alle Partite</button>
+        </div>
+
+        <!-- SEZIONE SOTTOMENU GOL MULTIPLI -->
         <div id="step-sub-selection" class="sub-selection-section">
             <p style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
                 Scegli quale rete vuoi guardare
@@ -324,6 +416,7 @@
             <button class="action-btn" id="sub-back-btn" onclick="tornaAiMarcatori()">← Torna Indietro</button>
         </div>
 
+        <!-- SEZIONE PLAYER VIDEO -->
         <div id="step-video" class="video-section">
             <p id="video-subtitle" style="color: #888; font-weight: 400; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">
                 Guarda l'azione del gol
@@ -355,6 +448,28 @@
     let nomeGiocatoreCorrente = '';
     let partitaCorrente = '';
 
+    function attivaPulsantiGrecia() {
+        document.getElementById('grecia-stato-complessivo').style.display = 'none';
+        document.getElementById('grecia-stato-selection').style.display = 'block';
+        document.getElementById('grecia-img-andata').style.display = 'none';
+        document.getElementById('grecia-img-ritorno').style.display = 'none';
+    }
+
+    function cambiaPosterGrecia(turno) {
+        if (turno === 'andata') {
+            document.getElementById('grecia-img-andata').style.display = 'block';
+            document.getElementById('grecia-img-ritorno').style.display = 'none';
+        } else {
+            document.getElementById('grecia-img-andata').style.display = 'none';
+            document.getElementById('grecia-img-ritorno').style.display = 'block';
+        }
+    }
+
+    function resetVistaGrecia() {
+        document.getElementById('grecia-stato-selection').style.display = 'none';
+        document.getElementById('grecia-stato-complessivo').style.display = 'block';
+    }
+
     function mostraMarcatori(partita) {
         partitaCorrente = partita;
         document.getElementById('step-poster').style.display = 'none';
@@ -364,6 +479,8 @@
         document.getElementById('step-markers-marocco').style.display = 'none';
         document.getElementById('step-markers-costa').style.display = 'none';
         document.getElementById('step-markers-argentina').style.display = 'none';
+        document.getElementById('step-markers-grecia-andata').style.display = 'none';
+        document.getElementById('step-markers-grecia-ritorno').style.display = 'none';
 
         if (partita === 'marocco') {
             document.getElementById('step-markers-marocco').style.display = 'block';
@@ -374,6 +491,12 @@
         } else if (partita === 'argentina') {
             document.getElementById('step-markers-argentina').style.display = 'block';
             document.getElementById('main-title').innerText = "Gol vs Argentina";
+        } else if (partita === 'grecia-andata') {
+            document.getElementById('step-markers-grecia-andata').style.display = 'block';
+            document.getElementById('main-title').innerText = "Gol vs Grecia (Andata)";
+        } else if (partita === 'grecia-ritorno') {
+            document.getElementById('step-markers-grecia-ritorno').style.display = 'block';
+            document.getElementById('main-title').innerText = "Gol vs Grecia (Ritorno)";
         }
     }
 
@@ -381,6 +504,8 @@
         document.getElementById('step-markers-marocco').style.display = 'none';
         document.getElementById('step-markers-costa').style.display = 'none';
         document.getElementById('step-markers-argentina').style.display = 'none';
+        document.getElementById('step-markers-grecia-andata').style.display = 'none';
+        document.getElementById('step-markers-grecia-ritorno').style.display = 'none';
         document.getElementById('step-poster').style.display = 'block';
         document.getElementById('main-title').innerText = "Seleziona una Partita";
     }
@@ -393,11 +518,12 @@
         document.getElementById('step-markers-marocco').style.display = 'none';
         document.getElementById('step-markers-costa').style.display = 'none';
         document.getElementById('step-markers-argentina').style.display = 'none';
+        document.getElementById('step-markers-grecia-andata').style.display = 'none';
+        document.getElementById('step-markers-grecia-ritorno').style.display = 'none';
         
         const grid = document.getElementById('sub-selection-grid');
         grid.innerHTML = ''; 
         
-        // Rimuove o applica la simmetria a 3 elementi dinamicamente
         if (numeroGol === 3) {
             grid.classList.add('grid-3items');
         } else {
@@ -419,7 +545,6 @@
                 </div>
             `;
         } else {
-            // Genera i bottoni per 3 (Lo Turco) o 4 gol (Giovannetti)
             for (let i = 1; i <= numeroGol; i++) {
                 let fileGol = prefissoFile + i + suffissoPartita;
                 grid.innerHTML += `
@@ -444,9 +569,15 @@
         } else if (partitaCorrente === 'costa') {
             document.getElementById('step-markers-costa').style.display = 'block';
             document.getElementById('main-title').innerText = "Gol vs Costa d'Avorio";
-        } else {
+        } else if (partitaCorrente === 'argentina') {
             document.getElementById('step-markers-argentina').style.display = 'block';
             document.getElementById('main-title').innerText = "Gol vs Argentina";
+        } else if (partitaCorrente === 'grecia-andata') {
+            document.getElementById('step-markers-grecia-andata').style.display = 'block';
+            document.getElementById('main-title').innerText = "Gol vs Grecia (Andata)";
+        } else if (partitaCorrente === 'grecia-ritorno') {
+            document.getElementById('step-markers-grecia-ritorno').style.display = 'block';
+            document.getElementById('main-title').innerText = "Gol vs Grecia (Ritorno)";
         }
     }
 
@@ -454,11 +585,9 @@
         const player = document.getElementById('main-video-player');
         const source = document.getElementById('video-source');
         
-        // Se il file termina con "cot", usa l'estensione maiuscola .MP4
         if (nomeCompletoFile.endsWith('cot')) {
             source.src = nomeCompletoFile + ".MP4";
         } else {
-            // Per tutti gli altri, inclusi i file dell'Argentina (.mp4 minuscolo)
             source.src = nomeCompletoFile + ".mp4";
         }
         
@@ -467,16 +596,17 @@
         
         document.getElementById('main-title').innerText = titoloSchermata;
         
-        if (provenienza === 'marocco' || provenienza === 'costa' || provenienza === 'argentina') {
+        if (provenienza === 'marocco' || provenienza === 'costa' || provenienza === 'argentina' || provenienza === 'grecia-andata' || provenienza === 'grecia-ritorno') {
             document.getElementById('step-markers-marocco').style.display = 'none';
             document.getElementById('step-markers-costa').style.display = 'none';
             document.getElementById('step-markers-argentina').style.display = 'none';
+            document.getElementById('step-markers-grecia-andata').style.display = 'none';
+            document.getElementById('step-markers-grecia-ritorno').style.display = 'none';
             document.getElementById('video-back-btn').setAttribute('onclick', 'tornaAiMarcatori()');
         } else {
             document.getElementById('step-sub-selection').style.display = 'none';
             document.getElementById('video-back-btn').setAttribute('onclick', 'tornaAlSottomenu()');
         }
-        
         document.getElementById('step-video').style.display = 'block';
     }
 
@@ -488,7 +618,6 @@
         document.getElementById('main-title').innerText = nomeGiocatoreCorrente;
     }
 </script>
-
 <script src="script.js"></script>
 
 </body>
